@@ -8,4 +8,11 @@
     tools:context="com.hpm.sp.streaminfoportal.BranchViewActivity"
     tools:showIn="@layout/activity_branch_view">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/branch_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        />
+
 </android.support.constraint.ConstraintLayout>
