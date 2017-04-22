@@ -22,6 +22,11 @@
             android:id="@+id/nav_pravachanas"
             android:icon="@drawable/ic_music_note_black"
             android:title="Pravachanas" />
+        <item
+            android:id="@+id/nav_tatva"
+            android:title="Tatvachandrika articles"
+            android:icon="@drawable/ic_note_black"
+            />
     </group>
 
     <item android:title="Contact Us">
