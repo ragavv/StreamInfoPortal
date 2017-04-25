@@ -36,7 +36,7 @@ public class BranchDataObject {
 
     public BranchDataObject(String name, String location, String contact){
         this.name = name;
-        this.contact = contact;
-        this.location = location;
+        this.contact = "Ph.: " + contact;
+        this.location = "Address: " + location;
     }
 }

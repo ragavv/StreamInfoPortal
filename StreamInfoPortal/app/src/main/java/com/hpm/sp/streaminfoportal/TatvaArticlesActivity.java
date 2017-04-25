@@ -41,7 +41,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tatva_articles);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://192.168.1.5:8888/articlesList.php");
+        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://hpmahesh.com/articlesList.php");
         fetchArticles.execute();
         System.out.println(jsonObject);
         mRecyclerView = (RecyclerView) findViewById(R.id.tatva_recycler_view);

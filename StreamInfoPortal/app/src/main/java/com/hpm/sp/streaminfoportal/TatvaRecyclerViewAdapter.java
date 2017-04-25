@@ -14,7 +14,7 @@ import java.util.*;
 public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecyclerViewAdapter
         .DataObjectHolder>  {
 
-    private ArrayList<TatvaDataObject> mDataset;
+    private ArrayList<TatvaDataObject> tatvaDataset;
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
@@ -43,14 +43,12 @@ public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecycler
     }
 
     public TatvaRecyclerViewAdapter(ArrayList<TatvaDataObject> myDataset) {
-        mDataset = myDataset;
+        tatvaDataset = myDataset;
     }
 
     @Override
-    public DataObjectHolder onCreateViewHolder(ViewGroup parent,
-                                               int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_list_row, parent, false);
+    public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_list_row, parent, false);
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
@@ -58,15 +56,15 @@ public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecycler
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.nameLabel.setText(mDataset.get(position).getNameText());
-        holder.dateTime.setText(mDataset.get(position).getAuthorText());
-        holder.artLoc.setText(mDataset.get(position).getFileLocation());
+        holder.nameLabel.setText(tatvaDataset.get(position).getNameText());
+        holder.dateTime.setText(tatvaDataset.get(position).getAuthorText());
+        holder.artLoc.setText(tatvaDataset.get(position).getFileLocation());
     }
 
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return tatvaDataset.size();
     }
 
     public interface MyClickListener {

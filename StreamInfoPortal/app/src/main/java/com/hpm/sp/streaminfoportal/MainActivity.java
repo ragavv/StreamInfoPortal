@@ -97,13 +97,21 @@ public class MainActivity extends AppCompatActivity
             Intent callAboutPage = new Intent(this, AboutUsActivity.class);
             startActivity(callAboutPage);
 
-        } else if (id == R.id.nav_parampara) {
+        }
+        else if (id == R.id.nav_parampara) {
 
-        } else if (id == R.id.nav_events) {
+        }
+        else if (id == R.id.nav_events) {
 
-        } else if (id == R.id.nav_mail) {
+        }
+        else if(id == R.id.nav_pravachanas)
+        {
 
-        } else if (id == R.id.nav_branch) {
+        }
+        else if (id == R.id.nav_mail) {
+
+        }
+        else if (id == R.id.nav_branch) {
             Intent callBranchPage = new Intent(this, BranchViewActivity.class);
             startActivity(callBranchPage);
         }
@@ -121,7 +129,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://192.168.1.5:8888/panchanga.php", panchangaView);
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://hpmahesh.com/panchanga.php", panchangaView);
             fetchToday.execute();
         }
         else
@@ -130,6 +138,17 @@ public class MainActivity extends AppCompatActivity
         }
     }
     protected void refreshEvents(){
-//        TextView eventsView = (TextView) findViewById(R.id.mywidget);
+        TextView eventsView = (TextView) findViewById(R.id.event_text);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
+        {
+            EventFetchHandler fetchToday = new EventFetchHandler("http://hpmahesh.com/eventsList.php", eventsView);
+            fetchToday.execute();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

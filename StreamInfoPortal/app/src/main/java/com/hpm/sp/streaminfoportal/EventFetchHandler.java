@@ -9,16 +9,16 @@ import java.io.InputStream;
 import java.io.*;
 import java.net.*;
 
-public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
+public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
     String url = "";
     TextView textView;
 
-    public PanchangaFetchHandler(String urlString, TextView textView) {
+    public EventFetchHandler(String urlString, TextView textView) {
         url = urlString;
         this.textView = textView;
     }
 
-    public PanchangaFetchHandler(String urlString) {
+    public EventFetchHandler(String urlString) {
         url = urlString;
     }
 
@@ -41,7 +41,6 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
             System.out.println(ex);
             return null;
         }
-
     }
 
     @Override
@@ -53,7 +52,7 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
         if(!(textView == null))
         {
             try {
-                textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("text"));
+                textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("name"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
