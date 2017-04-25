@@ -1,6 +1,9 @@
 package com.hpm.sp.streaminfoportal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,8 +29,6 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    public static JSONObject jsonObject = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +91,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the home
-        } else if (id == R.id.nav_about) {
+        }
+        else if (id == R.id.nav_about) {
 
             Intent callAboutPage = new Intent(this, AboutUsActivity.class);
             startActivity(callAboutPage);
@@ -113,7 +116,18 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     protected void refreshPanchanga(){
-//        TextView panchangaView = (TextView) findViewById(R.id.panchanga_text);
+        TextView panchangaView = (TextView) findViewById(R.id.panchanga_text);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
+        {
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://192.168.1.5:8888/panchanga.php", panchangaView);
+            fetchToday.execute();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
+        }
     }
     protected void refreshEvents(){
 //        TextView eventsView = (TextView) findViewById(R.id.mywidget);

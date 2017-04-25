@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -56,8 +58,20 @@ public class TatvaArticlesActivity extends AppCompatActivity {
                 articleList.clear();
                 mAdapter = new TatvaRecyclerViewAdapter(articleList);
                 mRecyclerView.setAdapter(mAdapter);
-                mAdapter = new TatvaRecyclerViewAdapter(refreshList());
-                mRecyclerView.setAdapter(mAdapter);
+                boolean connected = false;
+                ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    connected = true;
+                }
+                else
+                    connected = false;
+                if(connected){
+                    mAdapter = new TatvaRecyclerViewAdapter(refreshList());
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -100,6 +114,8 @@ public class TatvaArticlesActivity extends AppCompatActivity {
 
         request.setDestinationInExternalFilesDir(TatvaArticlesActivity.this, Environment.DIRECTORY_DOWNLOADS,articleName);
         downloadReference = downloadManager.enqueue(request);
+
+        Toast.makeText(getApplicationContext(), "Download started", Toast.LENGTH_SHORT).show();
 
         return downloadReference;
     }

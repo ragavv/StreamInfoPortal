@@ -1,6 +1,9 @@
 package com.hpm.sp.streaminfoportal;
 
 import android.os.AsyncTask;
+import android.widget.TextView;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.InputStream;
 import java.io.*;
@@ -8,11 +11,16 @@ import java.net.*;
 
 public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
     String url = "";
+    TextView textView;
+
+    public PanchangaFetchHandler(String urlString, TextView textView) {
+        url = urlString;
+        this.textView = textView;
+    }
 
     public PanchangaFetchHandler(String urlString) {
         url = urlString;
     }
-
 
     public JSONObject getJSONFromUrl() {
 
@@ -26,9 +34,6 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            StringBuilder sb = new StringBuilder();
-            //System.out.println(reader.readLine());
-
             return new JSONObject(reader.readLine());
         }
         catch (Exception ex)
@@ -45,6 +50,17 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
     }
 
     protected void onPostExecute(JSONObject result) {
-        TatvaArticlesActivity.jsonObject = result;
+        if(!(textView == null))
+        {
+            try {
+                textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("text"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            
+        }
     }
 }
