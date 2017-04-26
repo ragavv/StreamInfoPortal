@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+//        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -99,17 +99,18 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_parampara) {
-
+            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.nav_events) {
-
+            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.nav_pravachanas)
         {
-
+            Intent callPravachanaActivity = new Intent(this, PravachanaActivity.class);
+            startActivity(callPravachanaActivity);
         }
         else if (id == R.id.nav_mail) {
-
+            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.nav_branch) {
             Intent callBranchPage = new Intent(this, BranchViewActivity.class);

@@ -1,27 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TatvaArticlesActivity"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    >
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hpm.sp.streaminfoportal.EventActivity"
+    tools:showIn="@layout/activity_event">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please click on the article to download it"
+        android:text="Upcoming events"
         android:layout_marginTop="65dp"
         android:textSize="24dp"/>
 
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/tatva_recycler_view"
+        android:id="@+id/event_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:paddingTop="@dimen/nav_header_height"
         />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

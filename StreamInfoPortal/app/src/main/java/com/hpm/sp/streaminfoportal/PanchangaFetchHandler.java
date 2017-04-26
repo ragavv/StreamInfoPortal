@@ -28,7 +28,7 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
 
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
-            myConn.setConnectTimeout(1000);
+            myConn.setConnectTimeout(15000);
             myConn.setReadTimeout(1500);
             myConn.setDoOutput(true);
             myConn.connect();

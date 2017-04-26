@@ -1,20 +1,33 @@
 package com.hpm.sp.streaminfoportal;
 
+/**
+ * Created by mahesh on 26/04/17.
+ */
+
 import android.os.AsyncTask;
+import android.widget.TextView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.*;
-import java.net.*;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
+public class PravachanaFetchHandler extends AsyncTask<String, Void, JSONObject> {
     String url = "";
+    TextView textView;
 
-    public ArticleFetchHandler(String urlString) {
+    public PravachanaFetchHandler(String urlString, TextView textView) {
         url = urlString;
+        this.textView = textView;
     }
 
+    public PravachanaFetchHandler(String urlString) {
+        url = urlString;
+    }
 
     public JSONObject getJSONFromUrl() {
 
@@ -28,12 +41,7 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            //System.out.println(reader.readLine());
-            JSONObject myJSONObject = new JSONObject(reader.readLine());
-            System.out.println(myJSONObject);
-            TatvaArticlesActivity.jsonObject = myJSONObject;
-//            return new JSONObject(reader.readLine());
-            return myJSONObject;
+            return new JSONObject(reader.readLine());
         }
         catch (Exception ex)
         {
@@ -49,6 +57,17 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
     }
 
     protected void onPostExecute(JSONObject result) {
-        TatvaArticlesActivity.jsonObject = result;
+        if(!(textView == null))
+        {
+            try {
+                textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("text"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+
+        }
     }
 }

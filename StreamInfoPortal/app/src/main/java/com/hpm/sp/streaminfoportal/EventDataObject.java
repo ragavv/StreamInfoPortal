@@ -9,12 +9,14 @@ public class EventDataObject {
     private String dateText;
     private String timeText;
     private String locationText;
+    private String detailsText;
 
-    EventDataObject (String text1, String text2, String text3, String text4){
+    EventDataObject (String text1, String text2, String text3, String text4, String text5){
         nameText = text1;
         dateText = text2;
         timeText = text3;
         locationText = text3;
+        detailsText = text5;
     }
 
     public String getNameText() {
@@ -47,5 +49,13 @@ public class EventDataObject {
 
     public void setLocationText(String locationText) {
         this.locationText = locationText;
+    }
+
+    public String getDetailsText() {
+        return detailsText;
+    }
+
+    public void setDetailsText(String detailsText) {
+        this.detailsText = detailsText;
     }
 }

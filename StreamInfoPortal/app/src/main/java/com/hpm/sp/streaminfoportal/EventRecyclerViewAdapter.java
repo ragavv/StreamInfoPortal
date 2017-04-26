@@ -11,24 +11,28 @@ import java.util.*;
  * Created by mahesh on 22/04/17.
  */
 
-public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecyclerViewAdapter
+public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter
         .DataObjectHolder>  {
 
-    private ArrayList<TatvaDataObject> tatvaDataset;
+    private ArrayList<EventDataObject> eventDataset;
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
         TextView nameLabel;
-        TextView dateTime;
-        TextView artLoc;
+        TextView eventDetails;
+        TextView eventDate;
+        TextView eventPlace;
+        TextView eventTime;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            nameLabel = (TextView) itemView.findViewById(R.id.tatvaName);
-            dateTime = (TextView) itemView.findViewById(R.id.tatvaAuthor);
-            artLoc = (TextView) itemView.findViewById(R.id.artLoc);
+            nameLabel = (TextView) itemView.findViewById(R.id.eventName);
+            eventDetails = (TextView) itemView.findViewById(R.id.eventDetails);
+            eventDate = (TextView) itemView.findViewById(R.id.eventDate);
+            eventPlace = (TextView) itemView.findViewById(R.id.eventPlace);
+            eventTime = (TextView) itemView.findViewById(R.id.eventTime);
             itemView.setOnClickListener(this);
         }
 
@@ -42,8 +46,8 @@ public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecycler
         this.myClickListener = myClickListener;
     }
 
-    public TatvaRecyclerViewAdapter(ArrayList<TatvaDataObject> myDataset) {
-        tatvaDataset = myDataset;
+    public EventRecyclerViewAdapter(ArrayList<EventDataObject> myDataset) {
+        eventDataset = myDataset;
     }
 
     @Override
@@ -56,15 +60,17 @@ public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecycler
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.nameLabel.setText(tatvaDataset.get(position).getNameText());
-        holder.dateTime.setText(tatvaDataset.get(position).getAuthorText());
-        holder.artLoc.setText(tatvaDataset.get(position).getFileLocation());
+        holder.nameLabel.setText(eventDataset.get(position).getNameText());
+        holder.eventDetails.setText(eventDataset.get(position).getDetailsText());
+        holder.eventPlace.setText(eventDataset.get(position).getLocationText());
+        holder.eventDate.setText(eventDataset.get(position).getDateText());
+        holder.eventTime.setText(eventDataset.get(position).getTimeText());
     }
 
 
     @Override
     public int getItemCount() {
-        return tatvaDataset.size();
+        return eventDataset.size();
     }
 
     public interface MyClickListener {

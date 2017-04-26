@@ -1,11 +1,7 @@
 package com.hpm.sp.streaminfoportal;
 
-import android.app.Activity;
 import android.app.DownloadManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -41,6 +37,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tatva_articles);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://hpmahesh.com/articlesList.php");
         fetchArticles.execute();
         System.out.println(jsonObject);
@@ -95,7 +92,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         ((TatvaRecyclerViewAdapter) mAdapter).setOnItemClickListener(new TatvaRecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Uri articleUri = Uri.parse("http://192.168.1.5:8888/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                Uri articleUri = Uri.parse("http://hpmahesh.com/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
                 System.out.println(articleUri.toString());
                 if(!((TextView) v.findViewById(R.id.artLoc)).getText().toString().equalsIgnoreCase(" "))
                     downloadSong(articleUri, ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
