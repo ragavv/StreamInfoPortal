@@ -2,6 +2,7 @@ package com.hpm.sp.streaminfoportal;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +29,8 @@ public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
 
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
-            myConn.setConnectTimeout(1000);
-            myConn.setReadTimeout(1500);
+            myConn.setConnectTimeout(25000);
+            myConn.setReadTimeout(2500);
             myConn.setDoOutput(true);
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
@@ -49,17 +50,22 @@ public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
     }
 
     protected void onPostExecute(JSONObject result) {
-        if(!(textView == null))
+        if(result.length() > 0)
         {
-            try {
-                textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("name"));
-            } catch (Exception e) {
-                e.printStackTrace();
+            EventActivity.jsonObject = result;
+            System.out.println(result);
+            if(!(textView == null))
+            {
+                try {
+                    textView.setText((String)result.getJSONArray("result").getJSONObject(0).get("name"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         else
         {
-
+            //do nothing
         }
     }
 }

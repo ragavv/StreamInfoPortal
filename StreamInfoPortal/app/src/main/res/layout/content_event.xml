@@ -8,19 +8,12 @@
     tools:context="com.hpm.sp.streaminfoportal.EventActivity"
     tools:showIn="@layout/activity_event">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upcoming events"
-        android:layout_marginTop="65dp"
-        android:textSize="24dp"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:paddingTop="@dimen/nav_header_height"
+        android:paddingTop="10dp"
         />
 
 </android.support.constraint.ConstraintLayout>

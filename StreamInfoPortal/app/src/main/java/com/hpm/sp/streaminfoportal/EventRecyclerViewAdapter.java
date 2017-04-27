@@ -18,8 +18,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
+            implements View.OnClickListener {
         TextView nameLabel;
         TextView eventDetails;
         TextView eventDate;
@@ -52,7 +51,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tatva_card_list_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_row, parent, false);
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;

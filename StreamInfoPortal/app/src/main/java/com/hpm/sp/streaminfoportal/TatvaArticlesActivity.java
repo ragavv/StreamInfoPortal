@@ -2,6 +2,9 @@ package com.hpm.sp.streaminfoportal;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -21,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TatvaArticlesActivity extends AppCompatActivity {
 
@@ -92,29 +96,24 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         ((TatvaRecyclerViewAdapter) mAdapter).setOnItemClickListener(new TatvaRecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Uri articleUri = Uri.parse("http://hpmahesh.com/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                Uri articleUri = Uri.parse("http://www.hpmahesh.com/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
                 System.out.println(articleUri.toString());
-                if(!((TextView) v.findViewById(R.id.artLoc)).getText().toString().equalsIgnoreCase(" "))
-                    downloadSong(articleUri, ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                if(!((TextView) v.findViewById(R.id.artLoc)).getText().toString().equalsIgnoreCase(" ")){
+//                    downloadSong(articleUri, ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                    Intent viewArticleIntent = new Intent(Intent.ACTION_VIEW, articleUri);
+                    viewArticleIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    viewArticleIntent.setPackage("com.android.chrome");
+                    try {
+                        startActivity(viewArticleIntent);
+                    }
+                    catch(Exception ex){
+                        // Do something else here. Maybe pop up a Dialog or Toast
+                        ex.printStackTrace();
+                    }
+                }
+
             }
         });
-    }
-
-
-    protected long downloadSong(Uri uri, String articleName){
-
-        DownloadManager downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-
-        request.setTitle(articleName);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
-        request.setDestinationInExternalFilesDir(TatvaArticlesActivity.this, Environment.DIRECTORY_DOWNLOADS,articleName);
-        downloadReference = downloadManager.enqueue(request);
-
-        Toast.makeText(getApplicationContext(), "Download started", Toast.LENGTH_SHORT).show();
-
-        return downloadReference;
     }
 
 

@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.nav_events) {
-            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
+            Intent viewEventsIntent = new Intent(this, EventActivity.class);
+            startActivity(viewEventsIntent);
         }
         else if(id == R.id.nav_pravachanas)
         {

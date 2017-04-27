@@ -15,7 +15,7 @@ public class EventDataObject {
         nameText = text1;
         dateText = text2;
         timeText = text3;
-        locationText = text3;
+        locationText = text4;
         detailsText = text5;
     }
 
