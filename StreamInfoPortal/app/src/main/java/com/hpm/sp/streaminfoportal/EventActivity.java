@@ -38,7 +38,7 @@ public class EventActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Events");
 
-        EventFetchHandler fetchBranches = new EventFetchHandler("http://192.168.1.5:8888/eventsList.php");
+        EventFetchHandler fetchBranches = new EventFetchHandler("http://hpmahesh.com/eventsList.php");
         fetchBranches.execute();
         System.out.println(jsonObject);
 
@@ -68,7 +68,7 @@ public class EventActivity extends AppCompatActivity {
         else
             Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     protected ArrayList<EventDataObject> refreshList(){

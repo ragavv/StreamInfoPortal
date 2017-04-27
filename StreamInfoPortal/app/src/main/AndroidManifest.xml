@@ -47,18 +47,8 @@
         <activity
             android:name=".BranchViewActivity"
             android:label="@string/title_activity_branch_view"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
-        </activity>
-        <activity
-            android:name=".PravachanaActivity"
-            android:label="@string/title_activity_pravachana"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -67,13 +57,23 @@
         <activity
             android:name=".EventActivity"
             android:label="@string/title_activity_event"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GuruParampareActivity"
+            android:label="@string/title_activity_guru_parampare"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hpm.sp.streaminfoportal.MainActivity" />
         </activity>
+        <activity android:name=".PravachanaActivity"></activity>
     </application>
 
 </manifest>

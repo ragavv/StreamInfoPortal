@@ -109,7 +109,7 @@
 </string>
     <string name="title_activity_tatva_articles">Tatvachandrika Articles</string>
     <string name="title_activity_branch_view">BranchViewActivity</string>
-    <string name="title_activity_pravachana">PravachanaActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_event">EventActivity</string>
+    <string name="title_activity_guru_parampare">Guru Parampare</string>
 </resources>

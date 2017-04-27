@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_parampara) {
-            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
+            Intent guruParampareIntent = new Intent(this, GuruParampareActivity.class);
+            startActivity(guruParampareIntent);
         }
         else if (id == R.id.nav_events) {
             Intent viewEventsIntent = new Intent(this, EventActivity.class);
@@ -106,8 +107,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if(id == R.id.nav_pravachanas)
         {
-            Intent callPravachanaActivity = new Intent(this, PravachanaActivity.class);
-            startActivity(callPravachanaActivity);
+            Intent pravachanaViewIntent = new Intent(this, PravachanaActivity.class);
+            startActivity(pravachanaViewIntent);
         }
         else if (id == R.id.nav_mail) {
             Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://192.168.1.5:8888/panchanga.php", panchangaView);
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://hpmahesh.com/panchanga.php", panchangaView);
             fetchToday.execute();
         }
         else
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            EventFetchHandler fetchToday = new EventFetchHandler("http://192.168.1.5:8888/eventsList.php", eventsView);
+            EventFetchHandler fetchToday = new EventFetchHandler("http://hpmahesh.com/eventsList.php", eventsView);
             fetchToday.execute();
         }
         else

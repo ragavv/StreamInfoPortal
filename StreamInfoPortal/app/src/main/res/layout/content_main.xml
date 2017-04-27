@@ -8,19 +8,39 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="140dp"
         android:layout_gravity="bottom"
         android:src="@drawable/home_header"
-        android:layout_marginBottom="0dp"
-        android:paddingTop="8dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"/>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pravachana_view"
+        android:layout_gravity="top"
+        android:layout_width= "match_parent"
+        android:layout_height="180dp"
+        card_view:cardCornerRadius="4dp"
+        android:layout_weight="1"
+        android:layout_margin="4dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/main_screen_image_1"
+            android:minHeight="180dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"/>
+    </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/panchanga_view"
         android:layout_gravity="top"
         android:layout_width= "match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         card_view:cardCornerRadius="4dp"
         android:layout_weight="1"
         android:padding="4dp"
@@ -31,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Panchanga"
-            android:textSize="12pt"
+            android:textSize="10pt"
             android:paddingLeft="4dp"
             android:paddingTop="4dp"/>
 
@@ -45,43 +65,14 @@
             android:layout_marginTop="25pt"/>
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/pravachana_view"
-        android:layout_gravity="top"
-        android:layout_width= "match_parent"
-        android:layout_height="200dp"
-        card_view:cardCornerRadius="4dp"
-        android:layout_weight="1"
-        android:padding="4dp"
-        android:layout_margin="4dp"
-        >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Pravachana"
-            android:textSize="12pt"
-            android:paddingLeft="4dp"
-            android:paddingTop="4dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pravachana_video"
-            android:textSize="9pt"
-            android:paddingLeft="16dp"
-            android:paddingTop="4dp"
-            android:text="Embed the latest video here"
-            android:layout_marginTop="25pt"/>
-    </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/event_view"
         android:layout_gravity="top"
         android:layout_width= "match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         card_view:cardCornerRadius="4dp"
         android:layout_weight="1"
         android:padding="4dp"
@@ -93,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Upcoming events"
-            android:textSize="12pt"
+            android:textSize="10pt"
             android:paddingLeft="4dp"
             android:paddingTop="4dp"/>
 

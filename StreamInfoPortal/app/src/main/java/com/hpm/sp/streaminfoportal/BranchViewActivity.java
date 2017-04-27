@@ -29,7 +29,7 @@ public class BranchViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Our Branches");
 
         mRecyclerView = (RecyclerView) findViewById(R.id.branch_recycler_view);
