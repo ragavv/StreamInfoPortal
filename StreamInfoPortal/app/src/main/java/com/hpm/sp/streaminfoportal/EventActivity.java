@@ -1,8 +1,10 @@
 package com.hpm.sp.streaminfoportal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -33,8 +36,9 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Events");
 
-        EventFetchHandler fetchBranches = new EventFetchHandler("http://hpmahesh.com/eventsList.php");
+        EventFetchHandler fetchBranches = new EventFetchHandler("http://192.168.1.5:8888/eventsList.php");
         fetchBranches.execute();
         System.out.println(jsonObject);
 
@@ -49,7 +53,7 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 eventList.clear();
-                mAdapter = new EventRecyclerViewAdapter(eventList);
+                mAdapter = new EventRecyclerViewAdapter(refreshList());
                 mRecyclerView.setAdapter(mAdapter);
             }
         });
@@ -79,6 +83,16 @@ public class EventActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        ((EventRecyclerViewAdapter) mAdapter).setOnItemClickListener(new EventRecyclerViewAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                System.out.println(position);
+            }
+        });
     }
 
 }

@@ -60,8 +60,8 @@ public class PravachanaActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -118,10 +118,15 @@ public class PravachanaActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_pravachana, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            View videoListView = inflater.inflate(R.layout.fragment_video_pravachana, container, false);
+            View audioListView = inflater.inflate(R.layout.fragment_audio_pravachana, container, false);
+
+            TextView textView = (TextView) videoListView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+
+            TextView audioTextView = (TextView) audioListView.findViewById(R.id.section_label);
+            audioTextView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return videoListView;
         }
     }
 
@@ -144,7 +149,7 @@ public class PravachanaActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 

@@ -29,8 +29,6 @@ public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
 
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
-            myConn.setConnectTimeout(25000);
-            myConn.setReadTimeout(2500);
             myConn.setDoOutput(true);
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
@@ -53,7 +51,6 @@ public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
         if(result.length() > 0)
         {
             EventActivity.jsonObject = result;
-            System.out.println(result);
             if(!(textView == null))
             {
                 try {

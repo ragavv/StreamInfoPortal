@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -125,13 +124,20 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
     protected void refreshPanchanga(){
+
         TextView panchangaView = (TextView) findViewById(R.id.panchanga_text);
+        if(!(panchangaView.getText() == ""))
+        {
+            return;
+        }
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://hpmahesh.com/panchanga.php", panchangaView);
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://192.168.1.5:8888/panchanga.php", panchangaView);
             fetchToday.execute();
         }
         else
@@ -145,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            EventFetchHandler fetchToday = new EventFetchHandler("http://hpmahesh.com/eventsList.php", eventsView);
+            EventFetchHandler fetchToday = new EventFetchHandler("http://192.168.1.5:8888/eventsList.php", eventsView);
             fetchToday.execute();
         }
         else

@@ -12,6 +12,7 @@ import java.net.*;
 public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
     String url = "";
     TextView textView;
+    public static String todayString ;
 
     public PanchangaFetchHandler(String urlString, TextView textView) {
         url = urlString;
@@ -22,14 +23,13 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
         url = urlString;
     }
 
+
     public JSONObject getJSONFromUrl() {
 
         try{
 
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
-            myConn.setConnectTimeout(25000);
-            myConn.setReadTimeout(1500);
             myConn.setDoOutput(true);
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
@@ -60,7 +60,12 @@ public class PanchangaFetchHandler extends AsyncTask<String, Void, JSONObject>{
         }
         else
         {
-
+            try {
+                todayString = (String)result.getJSONArray("result").getJSONObject(0).get("text");
+//                System.out.println(todayString);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

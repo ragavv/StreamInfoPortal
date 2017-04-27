@@ -42,7 +42,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://hpmahesh.com/articlesList.php");
+        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://192.168.1.5:8888/articlesList.php");
         fetchArticles.execute();
         System.out.println(jsonObject);
         mRecyclerView = (RecyclerView) findViewById(R.id.tatva_recycler_view);
@@ -96,7 +96,8 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         ((TatvaRecyclerViewAdapter) mAdapter).setOnItemClickListener(new TatvaRecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Uri articleUri = Uri.parse("http://www.hpmahesh.com/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                //this doesn't work with localhost
+                Uri articleUri = Uri.parse("http://docs.google.com/gview?embedded=true&url=http://192.168.1.5:8888/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
                 System.out.println(articleUri.toString());
                 if(!((TextView) v.findViewById(R.id.artLoc)).getText().toString().equalsIgnoreCase(" ")){
 //                    downloadSong(articleUri, ((TextView) v.findViewById(R.id.artLoc)).getText().toString());

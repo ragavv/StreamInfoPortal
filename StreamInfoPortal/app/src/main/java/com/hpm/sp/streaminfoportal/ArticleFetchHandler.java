@@ -22,8 +22,6 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
 
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
-            myConn.setConnectTimeout(15000);
-            myConn.setReadTimeout(2500);
             myConn.setDoOutput(true);
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
@@ -38,7 +36,7 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
         catch (Exception ex)
         {
             System.out.println(ex);
-            return null;
+            return new JSONObject();
         }
 
     }
