@@ -73,7 +73,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hpm.sp.streaminfoportal.MainActivity" />
         </activity>
-        <activity android:name=".PravachanaActivity"></activity>
+        <activity android:name=".PravachanaActivity" />
+        <activity android:name=".ContactInfoActivity"></activity>
     </application>
 
 </manifest>

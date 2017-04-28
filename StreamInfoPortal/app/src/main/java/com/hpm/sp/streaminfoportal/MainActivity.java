@@ -111,7 +111,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(pravachanaViewIntent);
         }
         else if (id == R.id.nav_mail) {
-            Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
+
+            Intent contactInfoIntent = new Intent(this, ContactInfoActivity.class);
+            startActivity(contactInfoIntent);
+
         }
         else if (id == R.id.nav_branch) {
             Intent callBranchPage = new Intent(this, BranchViewActivity.class);
