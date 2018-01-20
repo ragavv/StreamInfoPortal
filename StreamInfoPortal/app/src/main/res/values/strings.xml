@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StreamInfoPortal</string>
+    <string name="app_name">Sri Sosale Vyasaraja Matha</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -8,7 +8,7 @@
     <string name="homeTitle">HOME</string>
 
     <string name="home_text">Come, let’s restore Sri Vyasaraja Matha to it’s pristine glory ! Be a part of the change that is happening at the matha. Be part of the change you want to see.</string>
-    <string name="title_activity_about_us">About Us</string>
+    <string name="title_activity_about_us">Sri Vyasarajaru</string>
 
     <string name="about_text">Sri Vyâsa Tîrtha is probably the scholar of Tattvavâda held in highest
         esteem next to Sri Jayatîrtha. His work has been to write detailed commentaries on the works
@@ -107,9 +107,9 @@
 
         \n\nContent Credit : Dvaita.org, Sumadhwaseva.com and Srivyasaraja.org
 </string>
-    <string name="title_activity_tatva_articles">Tatvachandrika Articles</string>
-    <string name="title_activity_branch_view">BranchViewActivity</string>
+    <string name="title_activity_tatva_articles">Library</string>
+    <string name="title_activity_branch_view">Branches</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_event">EventActivity</string>
+    <string name="title_activity_event">Events</string>
     <string name="title_activity_guru_parampare">Guru Parampare</string>
 </resources>

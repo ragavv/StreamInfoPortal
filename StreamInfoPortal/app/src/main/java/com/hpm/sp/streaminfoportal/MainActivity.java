@@ -19,9 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +50,14 @@ public class MainActivity extends AppCompatActivity
 
         refreshPanchanga();
         refreshEvents();
+
+        Thread imageThread = new Thread();
+        imageThread.run();
+
+        ViewFlipper viewFlipper = (ViewFlipper) findViewById(R.id.image_flipper);
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.startFlipping();
+
     }
 
     @Override
@@ -141,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://hpmahesh.com/panchanga.php", panchangaView);
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("Put URL of server here", panchangaView);
             fetchToday.execute();
         }
         else
@@ -155,7 +165,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            EventFetchHandler fetchToday = new EventFetchHandler("http://hpmahesh.com/eventsList.php", eventsView);
+            EventFetchHandler fetchToday = new EventFetchHandler("Put URL of server here", eventsView);
             fetchToday.execute();
         }
         else

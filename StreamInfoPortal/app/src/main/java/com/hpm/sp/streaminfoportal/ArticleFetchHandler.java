@@ -26,11 +26,8 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
             myConn.connect();
             InputStream in = new BufferedInputStream(myConn.getInputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            //System.out.println(reader.readLine());
             JSONObject myJSONObject = new JSONObject(reader.readLine());
-            System.out.println(myJSONObject);
             TatvaArticlesActivity.jsonObject = myJSONObject;
-//            return new JSONObject(reader.readLine());
             return myJSONObject;
         }
         catch (Exception ex)

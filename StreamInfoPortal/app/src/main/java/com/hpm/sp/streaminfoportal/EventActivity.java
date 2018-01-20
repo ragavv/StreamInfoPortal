@@ -20,7 +20,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -38,7 +42,7 @@ public class EventActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Events");
 
-        EventFetchHandler fetchBranches = new EventFetchHandler("http://hpmahesh.com/eventsList.php");
+        EventFetchHandler fetchBranches = new EventFetchHandler("Put URL of server here");
         fetchBranches.execute();
         System.out.println(jsonObject);
 
@@ -75,8 +79,21 @@ public class EventActivity extends AppCompatActivity {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray("result");
             for(int i=0; i<jsonArray.length(); i++) {
-                EventDataObject dataObject = new EventDataObject((String) jsonArray.getJSONObject(i).get("name"), (String) jsonArray.getJSONObject(i).get("date"), (String) jsonArray.getJSONObject(i).get("time"), (String) jsonArray.getJSONObject(i).get("location"), (String) jsonArray.getJSONObject(i).get("details"));
+                DateFormat yyFormat = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat ddFormat = new SimpleDateFormat("dd MMM yyyy");
+                String inputDate = (String) jsonArray.getJSONObject(i).get("date");
+                Date eventDate = null;
+                try {
+                    eventDate = yyFormat.parse(inputDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                EventDataObject dataObject = new EventDataObject((String) jsonArray.getJSONObject(i).get("name"), ddFormat.format(eventDate), (String) jsonArray.getJSONObject(i).get("time"), (String) jsonArray.getJSONObject(i).get("location"), (String) jsonArray.getJSONObject(i).get("details"));
                 eventList.add(dataObject);
+            }
+            if(jsonArray.length() == 0)
+            {
+                Toast.makeText(getApplicationContext(), "Network error, Please try again later", Toast.LENGTH_SHORT).show();
             }
             return eventList;
         } catch (JSONException e) {

@@ -42,7 +42,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://hpmahesh.com/articlesList.php");
+        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("Put URL of server here");
         fetchArticles.execute();
         System.out.println(jsonObject);
         mRecyclerView = (RecyclerView) findViewById(R.id.tatva_recycler_view);
@@ -84,6 +84,10 @@ public class TatvaArticlesActivity extends AppCompatActivity {
                     TatvaDataObject dataObject = new TatvaDataObject((String) jsonArray.getJSONObject(i).get("name"), (String) jsonArray.getJSONObject(i).get("author"), (String) jsonArray.getJSONObject(i).get("location"));
                     articleList.add(dataObject);
                 }
+                if(jsonArray.length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Network error, Please try again later", Toast.LENGTH_SHORT).show();
+                }
                 return articleList;
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -97,7 +101,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 //this doesn't work with localhost
-                Uri articleUri = Uri.parse("http://docs.google.com/gview?embedded=true&url=http://hpmahesh.com/articles/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
+                Uri articleUri = Uri.parse("http://docs.google.com/gview?embedded=true&url=Put URL of server here/" + ((TextView) v.findViewById(R.id.artLoc)).getText().toString());
                 System.out.println(articleUri.toString());
                 if(!((TextView) v.findViewById(R.id.artLoc)).getText().toString().equalsIgnoreCase(" ")){
 //                    downloadSong(articleUri, ((TextView) v.findViewById(R.id.artLoc)).getText().toString());

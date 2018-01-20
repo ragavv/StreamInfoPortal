@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.*;
 
 /**
@@ -69,7 +71,14 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     @Override
     public int getItemCount() {
-        return eventDataset.size();
+        int i=0;
+        try{
+            i=eventDataset.size();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return i;
     }
 
     public interface MyClickListener {

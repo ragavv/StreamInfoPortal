@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info_black"
-            android:title="Sri VYÂSA TÎRTHA" />
+            android:title="Sri VYASARAJARU" />
         <item
             android:id="@+id/nav_parampara"
             android:icon="@drawable/ic_filter_vintage_black"
@@ -24,7 +24,7 @@
             android:title="Pravachanas" />
         <item
             android:id="@+id/nav_tatva"
-            android:title="Tatvachandrika articles"
+            android:title="Library"
             android:icon="@drawable/ic_note_black"
             />
     </group>

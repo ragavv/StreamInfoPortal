@@ -64,7 +64,15 @@ public class TatvaRecyclerViewAdapter extends RecyclerView.Adapter<TatvaRecycler
 
     @Override
     public int getItemCount() {
-        return tatvaDataset.size();
+        int i=0;
+        try{
+            i = tatvaDataset.size();
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+        return i;
     }
 
     public interface MyClickListener {

@@ -38,7 +38,13 @@ public class EventFetchHandler extends AsyncTask<String, Void, JSONObject>{
         catch (Exception ex)
         {
             System.out.println(ex);
-            return null;
+            try {
+                JSONObject tempJSON = new JSONObject("{\"result\":[{\"id\":\"1\",\"name\":\"Network error\",\"location\":\"\",\"author\":\"\"}]}");
+                return tempJSON;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 
