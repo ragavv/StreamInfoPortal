@@ -1,11 +1,12 @@
-package com.hpm.sp.streaminfoportal;
+package com.hpm.sp.streaminfoportal.EventsActivity;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.hpm.sp.streaminfoportal.R;
 
 import java.util.*;
 
@@ -65,7 +66,6 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         holder.eventDetails.setText(eventDataset.get(position).getDetailsText());
         holder.eventPlace.setText("Location: " + eventDataset.get(position).getLocationText());
         holder.eventDate.setText("Date: " + eventDataset.get(position).getDateText());
-        holder.eventTime.setText("Time: " + eventDataset.get(position).getTimeText());
     }
 
 

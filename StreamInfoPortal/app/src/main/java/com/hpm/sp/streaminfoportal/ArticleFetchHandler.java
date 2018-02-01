@@ -1,6 +1,7 @@
 package com.hpm.sp.streaminfoportal;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +11,7 @@ import java.net.*;
 
 public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
     String url = "";
+    public static final String TAG = ArticleFetchHandler.class.getSimpleName();
 
     public ArticleFetchHandler(String urlString) {
         url = urlString;
@@ -19,7 +21,7 @@ public class ArticleFetchHandler extends AsyncTask<String, Void, JSONObject>{
     public JSONObject getJSONFromUrl() {
 
         try{
-
+            Log.d(TAG, "getJSONFromUrl: URL -> " + url);
             HttpURLConnection myConn = (HttpURLConnection) new URL(url).openConnection();
             myConn.setRequestMethod("GET");
             myConn.setDoOutput(true);

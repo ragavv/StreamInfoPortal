@@ -1,5 +1,6 @@
 package com.hpm.sp.streaminfoportal;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +12,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
+import com.hpm.sp.streaminfoportal.Models.Video;
+import com.hpm.sp.streaminfoportal.Network.NetworkHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,89 +33,76 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PravachanaActivity extends AppCompatActivity {
+public class PravachanaActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     ArrayList<PravachanaDataObject> articleList = new ArrayList<>();
     public static JSONObject jsonObject = new JSONObject();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private SwipeRefreshLayout swipeLayout;
+    public static final String TAG = PravachanaActivity.class.getSimpleName();
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pravachana);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Pravachanas");
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        PravachanaFetchHandler fetchArticles = new PravachanaFetchHandler("Put URL of server here");
-        fetchArticles.execute();
-
+        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setRefreshing(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.pravachana_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        articleList.add(new PravachanaDataObject("Please refresh the list", " ", " "));
-        mAdapter = new PravachanaRecyclerViewAdapter(articleList);
-        mRecyclerView.setAdapter(mAdapter);
+        fetchVideos();
+    }
 
-        System.out.println(jsonObject);
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.refreshPravachana);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+    private void fetchVideos() {
+        NetworkHelper.getAllVideos(new ResponseInterface() {
             @Override
-            public void onClick(View view) {
-                articleList.clear();
-                mAdapter = new PravachanaRecyclerViewAdapter(articleList);
-                mRecyclerView.setAdapter(mAdapter);
-                boolean connected = false;
-                ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                    connected = true;
-                }
-                else
-                    connected = false;
-                if(connected){
-                    mAdapter = new PravachanaRecyclerViewAdapter(refreshList());
-                    System.out.println(mAdapter);
+            public void onResponseFromServer(List<?> objects, Exception e) {
+                swipeLayout.setRefreshing(false);
+                if (e == null) {
+                    Log.d(TAG, "onResponseFromServer: " + objects);
+                    ArrayList<Video> videos = new ArrayList<>();
+                    for (Video video : (ArrayList<Video>) objects) {
+                        if (video.getId().getVideoId() != null) {
+                            videos.add(video);
+                        }
+                    }
+                    mAdapter = new PravachanaRecyclerViewAdapter(PravachanaActivity.this, videos);
                     mRecyclerView.setAdapter(mAdapter);
+                    if (mAdapter != null) {
+                        initListener();
+                    }
+                } else {
+                    Log.d(TAG, "onResponseFromServer: " + e);
+                    e.printStackTrace();
                 }
-                else
-                    Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    protected ArrayList<PravachanaDataObject> refreshList(){
-        try {
-            JSONArray jsonArray = jsonObject.getJSONArray("result");
-            for(int i=0; i<jsonArray.length(); i++) {
-                PravachanaDataObject dataObject = new PravachanaDataObject((String) jsonArray.getJSONObject(i).get("title"), (String) jsonArray.getJSONObject(i).get("description"), (String) jsonArray.getJSONObject(i).get("link"));
-                articleList.add(dataObject);
-            }
-            if(jsonArray.length() == 0)
-            {
-                Toast.makeText(getApplicationContext(), "Network Error, Please try again later", Toast.LENGTH_SHORT).show();
-            }
-            return articleList;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
+    protected void onResume() {
+        super.onResume();
+        if (mAdapter != null) {
+            initListener();
         }
     }
 
-    protected void onResume() {
-        super.onResume();
+    private void initListener() {
         ((PravachanaRecyclerViewAdapter) mAdapter).setOnItemClickListener(new PravachanaRecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 Uri articleUri = Uri.parse(((TextView) v.findViewById(R.id.videoLink)).getText().toString());
                 System.out.println(articleUri.toString());
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, articleUri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, articleUri);
                 intent.setPackage("com.google.android.youtube");
                 startActivity(intent);
             }
@@ -116,4 +110,8 @@ public class PravachanaActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onRefresh() {
+        fetchVideos();
+    }
 }

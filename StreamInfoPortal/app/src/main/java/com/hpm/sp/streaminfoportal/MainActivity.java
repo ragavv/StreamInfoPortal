@@ -5,10 +5,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.TextUtils;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,17 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.hpm.sp.streaminfoportal.EventsActivity.EventActivity;
+import com.hpm.sp.streaminfoportal.EventsActivity.EventFetchHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -55,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         imageThread.run();
 
         ViewFlipper viewFlipper = (ViewFlipper) findViewById(R.id.image_flipper);
-        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setFlipInterval(8888);
         viewFlipper.startFlipping();
 
     }
@@ -151,7 +142,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("Put URL of server here", panchangaView);
+            PanchangaFetchHandler fetchToday = new PanchangaFetchHandler("http://192.168.0.14:8888/articlesList.php", panchangaView);
             fetchToday.execute();
         }
         else
@@ -165,7 +156,7 @@ public class MainActivity extends AppCompatActivity
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)
         {
-            EventFetchHandler fetchToday = new EventFetchHandler("Put URL of server here", eventsView);
+            EventFetchHandler fetchToday = new EventFetchHandler("http://192.168.0.14:8888/eventsList.php", eventsView);
             fetchToday.execute();
         }
         else

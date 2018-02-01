@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#f5531d</color>
     <color name="colorPrimaryDark">#ff6633</color>
-    <color name="colorAccent">#dd2c00</color>
+    <color name="colorAccent">#3f51b5</color>
     <color name="colorBackground">#e0e0e0</color>
+    <color name="titleTextColor">#161616</color>
+    <color name="hrColor">#e6e6e6</color>
+    <color name="cardview_background">#e1e1e1</color>
+
 </resources>

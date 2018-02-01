@@ -42,7 +42,7 @@ public class TatvaArticlesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("Put URL of server here");
+        ArticleFetchHandler fetchArticles = new ArticleFetchHandler("http://192.168.0.14:8888/articlesList.php");
         fetchArticles.execute();
         System.out.println(jsonObject);
         mRecyclerView = (RecyclerView) findViewById(R.id.tatva_recycler_view);
