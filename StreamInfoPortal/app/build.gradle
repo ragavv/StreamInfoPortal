@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply from: 'getExt.gradle'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.hpm.sp.streaminfoportal"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 2
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,8 +26,8 @@ android {
             applicationId "com.hpm.sp.streaminfoportal.stage"
             versionCode 2
             versionName "1.1"
-            buildConfigField 'String', 'URL_SERVER', '"' + getLocalIp('en1') + ':1337"'
-            buildConfigField 'Boolean', 'URL_SCHEME_IS_HTTPS', 'false'
+            buildConfigField 'String', 'URL_SERVER', '"ssm.kumardivyarajat.com"'
+            buildConfigField 'Boolean', 'URL_SCHEME_IS_HTTPS', 'true'
             buildConfigField 'Boolean', 'NETWORK_IS_LOGGIG_ENABLED', 'true'
         }
 
@@ -36,10 +36,14 @@ android {
             applicationId "com.hpm.sp.streaminfoportal"
             versionCode 2
             versionName "1.1"
-            buildConfigField 'String', 'URL_SERVER', '""'
+            buildConfigField 'String', 'URL_SERVER', '"ssm.kumardivyarajat.com"'
             buildConfigField 'Boolean', 'URL_SCHEME_IS_HTTPS', 'true'
             buildConfigField 'Boolean', 'NETWORK_IS_LOGGIG_ENABLED', 'false'
         }
+    }
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
     }
 }
 
@@ -48,17 +52,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:design:27.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:cardview-v7:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:cardview-v7:27.0.2'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testCompile 'junit:junit:4.12'
 }

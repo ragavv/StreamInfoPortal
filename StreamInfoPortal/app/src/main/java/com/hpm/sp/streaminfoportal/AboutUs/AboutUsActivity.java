@@ -1,4 +1,4 @@
-package com.hpm.sp.streaminfoportal;
+package com.hpm.sp.streaminfoportal.AboutUs;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
+
+import com.hpm.sp.streaminfoportal.R;
 
 public class AboutUsActivity extends AppCompatActivity {
 

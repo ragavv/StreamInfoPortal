@@ -1,4 +1,4 @@
-package com.hpm.sp.streaminfoportal.EventsActivity;
+package com.hpm.sp.streaminfoportal.Events;
 
 import android.os.AsyncTask;
 import android.util.Log;

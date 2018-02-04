@@ -38,7 +38,7 @@
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="false"
                     android:cropToPadding="false"
-                    android:src="@drawable/ic_play_circle_outline" />
+                    card_view:srcCompat="@drawable/ic_play_circle_outline" />
 
             </RelativeLayout>
 

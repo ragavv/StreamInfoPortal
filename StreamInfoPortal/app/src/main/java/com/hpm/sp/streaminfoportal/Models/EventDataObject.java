@@ -1,13 +1,17 @@
-package com.hpm.sp.streaminfoportal.EventsActivity;
+package com.hpm.sp.streaminfoportal.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by mahesh on 25/04/17.
@@ -46,7 +50,10 @@ public class EventDataObject implements Parcelable {
     }
 
     public Date getDateText() {
-        return dateText;
+        Calendar calendarDay = Calendar.getInstance();
+        calendarDay.setTime(this.dateText);
+        calendarDay.setTimeZone(TimeZone.getTimeZone("IST"));
+        return calendarDay.getTime();
     }
 
     public void setDateText(Date dateText) {

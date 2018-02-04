@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.hpm.sp.streaminfoportal.EventsActivity.EventDataObject;
 
 import java.lang.reflect.Field;
 import java.util.List;

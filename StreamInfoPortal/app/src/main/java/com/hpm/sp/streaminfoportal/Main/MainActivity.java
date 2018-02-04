@@ -1,4 +1,4 @@
-package com.hpm.sp.streaminfoportal;
+package com.hpm.sp.streaminfoportal.Main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.hpm.sp.streaminfoportal.EventsActivity.EventActivity;
-import com.hpm.sp.streaminfoportal.EventsActivity.EventFetchHandler;
+import com.hpm.sp.streaminfoportal.AboutUs.AboutUsActivity;
+import com.hpm.sp.streaminfoportal.BranchViewActivity;
+import com.hpm.sp.streaminfoportal.ContactInfoActivity;
+import com.hpm.sp.streaminfoportal.Events.EventActivity;
+import com.hpm.sp.streaminfoportal.Events.EventFetchHandler;
+import com.hpm.sp.streaminfoportal.GuruParampareActivity;
+import com.hpm.sp.streaminfoportal.PanchangaFetchHandler;
+import com.hpm.sp.streaminfoportal.PravachanaActivity;
+import com.hpm.sp.streaminfoportal.R;
+import com.hpm.sp.streaminfoportal.TatvaArticlesActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

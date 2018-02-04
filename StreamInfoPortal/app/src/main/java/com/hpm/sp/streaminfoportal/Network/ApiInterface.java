@@ -12,10 +12,10 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    @GET("events")
+    @GET("events?_sort=dateTime")
     Call<ResultDataObject> getAllEvents();
 
 
-    @GET("pravachanaList.php")
+    @GET("pravachana")
     Call<ResultDataObject> getAllVideos();
 }

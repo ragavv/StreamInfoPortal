@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Main.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -26,66 +26,80 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".AboutUs.AboutUsActivity"
             android:label="@string/title_activity_about_us"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
             android:name=".TatvaArticlesActivity"
             android:label="@string/title_activity_tatva_articles"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
             android:name=".BranchViewActivity"
             android:label="@string/title_activity_branch_view"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
-            android:name=".EventsActivity.EventActivity"
+            android:name=".Events.EventActivity"
             android:label="@string/title_activity_event"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
             android:name=".GuruParampareActivity"
             android:label="@string/title_activity_guru_parampare"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
             android:name=".PravachanaActivity"
             android:label="@string/title_activity_pravachana"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hpm.sp.streaminfoportal.MainActivity" />
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
-        <activity android:name=".ContactInfoActivity"></activity>
+        <activity android:name=".ContactInfoActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".EventDetailsActivity"
+            android:label="@string/title_activity_event_details"
+            android:parentActivityName=".Events.EventActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Events.EventActivity" />
+        </activity>
     </application>
 
 </manifest>

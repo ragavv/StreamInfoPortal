@@ -1,13 +1,16 @@
-package com.hpm.sp.streaminfoportal.EventsActivity;
+package com.hpm.sp.streaminfoportal.Events;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hpm.sp.streaminfoportal.Models.EventDataObject;
 import com.hpm.sp.streaminfoportal.R;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -15,33 +18,38 @@ import java.util.*;
  */
 
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter
-        .DataObjectHolder>  {
+        .DataObjectHolder> {
 
-    private ArrayList<EventDataObject> eventDataset;
+    private ArrayList<EventDataObject> eventDataset = new ArrayList<>();
     private static MyClickListener myClickListener;
 
+    public EventRecyclerViewAdapter() {
+    }
+
     public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+            {
         TextView nameLabel;
-        TextView eventDetails;
         TextView eventDate;
         TextView eventPlace;
-        TextView eventTime;
+        CardView mBranchView;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             nameLabel = (TextView) itemView.findViewById(R.id.eventName);
-            eventDetails = (TextView) itemView.findViewById(R.id.eventDetails);
             eventDate = (TextView) itemView.findViewById(R.id.eventDate);
             eventPlace = (TextView) itemView.findViewById(R.id.eventPlace);
-            eventTime = (TextView) itemView.findViewById(R.id.eventTime);
-            itemView.setOnClickListener(this);
+            mBranchView = (CardView) itemView.findViewById(R.id.branch_view);
         }
+    }
 
-        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
+    public void swap(ArrayList<EventDataObject> datas) {
+        if (datas == null || datas.size() == 0)
+            return;
+        if (eventDataset != null && eventDataset.size() > 0)
+            eventDataset.clear();
+        eventDataset.addAll(datas);
+        notifyDataSetChanged();
+
     }
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
@@ -61,27 +69,33 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     }
 
     @Override
-    public void onBindViewHolder(DataObjectHolder holder, int position) {
+    public void onBindViewHolder(final DataObjectHolder holder, final int position) {
         holder.nameLabel.setText(eventDataset.get(position).getNameText());
-        holder.eventDetails.setText(eventDataset.get(position).getDetailsText());
-        holder.eventPlace.setText("Location: " + eventDataset.get(position).getLocationText());
-        holder.eventDate.setText("Date: " + eventDataset.get(position).getDateText());
+        holder.eventPlace.setText(eventDataset.get(position).getLocationText());
+        holder.eventDate.setText(new SimpleDateFormat("dd-MMM-YYYY, hh:mm a").format(eventDataset.get(position).getDateText()));
+
+
+        holder.mBranchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myClickListener.onItemClick(eventDataset.get(position), holder.nameLabel);
+            }
+        });
     }
 
 
     @Override
     public int getItemCount() {
-        int i=0;
-        try{
-            i=eventDataset.size();
-        }
-        catch(Exception ex){
+        int i = 0;
+        try {
+            i = eventDataset.size();
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return i;
     }
 
     public interface MyClickListener {
-        void onItemClick(int position, View v);
+        void onItemClick(EventDataObject dataObject, TextView v);
     }
 }

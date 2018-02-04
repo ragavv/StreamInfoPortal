@@ -6,6 +6,7 @@
     <color name="colorBackground">#e0e0e0</color>
     <color name="titleTextColor">#161616</color>
     <color name="hrColor">#e6e6e6</color>
-    <color name="cardview_background">#e1e1e1</color>
+    <color name="cardview_background">#f2f6fd</color>
+    <color name="white">#ffffff</color>
 
 </resources>

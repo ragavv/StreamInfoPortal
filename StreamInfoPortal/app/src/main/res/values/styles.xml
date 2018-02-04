@@ -37,4 +37,16 @@
         <item name="android:background">@color/hrColor</item>
     </style>
 
+
+    <style name="CalendarText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="CalendarHeaderText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
 </resources>
