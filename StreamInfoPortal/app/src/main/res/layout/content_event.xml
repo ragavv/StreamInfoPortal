@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/main_layout"
     android:layout_height="match_parent"
     android:background="@color/cardview_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -30,9 +32,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_recycler_view"
         android:layout_width="match_parent"
-        android:layout_marginTop="32dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,16 +44,16 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/noEvents"
-        android:visibility="gone"
-        android:layout_height="200dp">
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="No Events For This Day"/>
+            android:text="No Events For This Day" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

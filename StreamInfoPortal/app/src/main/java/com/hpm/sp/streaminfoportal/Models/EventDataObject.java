@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;

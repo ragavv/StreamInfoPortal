@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.hpm.sp.streaminfoportal.Network.AppConfig;
 import com.hpm.sp.streaminfoportal.Network.NetworkHelper;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by kumardivyarajat on 1/21/18.
@@ -26,6 +27,12 @@ public class ApplicationBase extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
         AppConfig appConfig = new AppConfig(BuildConfig.URL_SCHEME_IS_HTTPS, BuildConfig.URL_SERVER, BuildConfig.NETWORK_IS_LOGGIG_ENABLED, 1);
         NetworkHelper.initialize(appConfig);
     }

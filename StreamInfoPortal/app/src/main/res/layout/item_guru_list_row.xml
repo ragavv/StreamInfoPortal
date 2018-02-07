@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_weight="0.3"
+            android:id="@+id/profileImage"
+            android:layout_height="100dp" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="0.7"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/TitleText"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/DescriptionText"
+                android:layout_height="wrap_content"
+                android:id="@+id/aradhana"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/DescriptionText"
+                android:layout_height="wrap_content"
+                android:id="@+id/brindavan"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/DescriptionText"
+                android:layout_height="wrap_content"
+                android:id="@+id/period"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

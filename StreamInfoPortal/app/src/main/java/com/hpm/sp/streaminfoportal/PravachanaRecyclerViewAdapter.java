@@ -11,6 +11,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hpm.sp.streaminfoportal.Interfaces.RecyclerViewClickListener;
 import com.hpm.sp.streaminfoportal.Models.Video;
 import com.squareup.picasso.Picasso;
 
@@ -25,11 +26,10 @@ public class PravachanaRecyclerViewAdapter extends RecyclerView.Adapter<Pravacha
 
     private static final long FADE_DURATION = 500;
     private ArrayList<Video> eventDataset;
-    private static MyClickListener myClickListener;
+    private RecyclerViewClickListener myClickListener;
     private Context context;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+    public static class DataObjectHolder extends RecyclerView.ViewHolder {
         TextView videoLabel;
         TextView videoDetails;
         TextView videoLink;
@@ -41,16 +41,10 @@ public class PravachanaRecyclerViewAdapter extends RecyclerView.Adapter<Pravacha
             videoDetails = (TextView) itemView.findViewById(R.id.videoDetails);
             videoLink = (TextView) itemView.findViewById(R.id.videoLink);
             mThumbnailView = (ImageView) itemView.findViewById(R.id.thumbnail_image);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
         }
     }
 
-    public void setOnItemClickListener(MyClickListener myClickListener) {
+    public void setOnItemClickListener(RecyclerViewClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
 
@@ -68,7 +62,7 @@ public class PravachanaRecyclerViewAdapter extends RecyclerView.Adapter<Pravacha
     }
 
     @Override
-    public void onBindViewHolder(DataObjectHolder holder, int position) {
+    public void onBindViewHolder(DataObjectHolder holder, final int position) {
         holder.videoLabel.setText(eventDataset.get(position).getSnippet().getTitle());
         holder.videoDetails.setText(eventDataset.get(position).getSnippet().getDescription());
         holder.videoLink.setText(eventDataset.get(position).getVideoLink());
@@ -80,6 +74,12 @@ public class PravachanaRecyclerViewAdapter extends RecyclerView.Adapter<Pravacha
                 .into(holder.mThumbnailView);
 
         setFadeAnimation(holder.itemView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myClickListener.onItemClick(position, eventDataset.get(position));
+            }
+        });
 //        setScaleAnimation(holder.itemView);
 
     }

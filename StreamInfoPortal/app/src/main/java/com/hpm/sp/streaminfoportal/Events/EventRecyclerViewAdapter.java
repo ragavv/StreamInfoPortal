@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hpm.sp.streaminfoportal.Interfaces.RecyclerViewClickListener;
 import com.hpm.sp.streaminfoportal.Models.EventDataObject;
 import com.hpm.sp.streaminfoportal.R;
 
@@ -21,13 +22,12 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         .DataObjectHolder> {
 
     private ArrayList<EventDataObject> eventDataset = new ArrayList<>();
-    private static MyClickListener myClickListener;
+    private RecyclerViewClickListener myClickListener;
 
     public EventRecyclerViewAdapter() {
     }
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            {
+    public static class DataObjectHolder extends RecyclerView.ViewHolder {
         TextView nameLabel;
         TextView eventDate;
         TextView eventPlace;
@@ -52,7 +52,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     }
 
-    public void setOnItemClickListener(MyClickListener myClickListener) {
+    public void setOnItemClickListener(RecyclerViewClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
 
@@ -78,7 +78,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         holder.mBranchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myClickListener.onItemClick(eventDataset.get(position), holder.nameLabel);
+                myClickListener.onItemClick(position, eventDataset.get(position));
             }
         });
     }

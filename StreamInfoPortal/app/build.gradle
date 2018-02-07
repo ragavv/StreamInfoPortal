@@ -64,8 +64,12 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.prolificinteractive:material-calendarview:1.4.3'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'jp.wasabeef:picasso-transformations:2.2.0'
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.2.2'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testCompile 'junit:junit:4.12'
 }

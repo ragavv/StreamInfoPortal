@@ -23,6 +23,20 @@ public class ResultDataObject implements Parcelable {
     @Expose
     private List<Video> videos = null;
 
+    @SerializedName("gurus")
+    @Expose
+    private List<Guru> gurus = null;
+
+    @SerializedName("panchanga")
+    @Expose
+    private List<Panchanga> panchangas = null;
+
+
+    @SerializedName("article")
+    @Expose
+    private List<Article> articles = null;
+
+
     public ResultDataObject() {
     }
 
@@ -40,6 +54,30 @@ public class ResultDataObject implements Parcelable {
 
     public void setVideos(List<Video> videos) {
         this.videos = videos;
+    }
+
+    public List<Guru> getGurus() {
+        return gurus;
+    }
+
+    public void setGurus(List<Guru> gurus) {
+        this.gurus = gurus;
+    }
+
+    public List<Panchanga> getPanchangas() {
+        return panchangas;
+    }
+
+    public void setPanchangas(List<Panchanga> panchangas) {
+        this.panchangas = panchangas;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     public String toString() {
@@ -79,11 +117,17 @@ public class ResultDataObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(this.event);
         dest.writeTypedList(this.videos);
+        dest.writeTypedList(this.gurus);
+        dest.writeTypedList(this.panchangas);
+        dest.writeTypedList(this.articles);
     }
 
     protected ResultDataObject(Parcel in) {
         this.event = in.createTypedArrayList(EventDataObject.CREATOR);
         this.videos = in.createTypedArrayList(Video.CREATOR);
+        this.gurus = in.createTypedArrayList(Guru.CREATOR);
+        this.panchangas = in.createTypedArrayList(Panchanga.CREATOR);
+        this.articles = in.createTypedArrayList(Article.CREATOR);
     }
 
     public static final Creator<ResultDataObject> CREATOR = new Creator<ResultDataObject>() {

@@ -24,7 +24,7 @@
             android:title="Pravachanas" />
         <item
             android:id="@+id/nav_tatva"
-            android:title="Library"
+            android:title="Articles"
             android:icon="@drawable/ic_note_black"
             />
     </group>
@@ -35,6 +35,11 @@
                 android:id="@+id/nav_mail"
                 android:icon="@drawable/ic_mail_black"
                 android:title="Contact Info" />
+
+            <item
+                android:id="@+id/nav_facebook"
+                android:icon="@drawable/ic_facebook_logo"
+                android:title="Facebook Page" />
             <item
                 android:id="@+id/nav_branch"
                 android:icon="@drawable/ic_place_black"

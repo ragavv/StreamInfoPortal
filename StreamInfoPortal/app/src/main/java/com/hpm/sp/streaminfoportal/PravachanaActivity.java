@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hpm.sp.streaminfoportal.Interfaces.RecyclerViewClickListener;
 import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
 import com.hpm.sp.streaminfoportal.Models.Video;
 import com.hpm.sp.streaminfoportal.Network.NetworkHelper;
@@ -33,12 +34,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PravachanaActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class PravachanaActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, RecyclerViewClickListener {
 
-    ArrayList<PravachanaDataObject> articleList = new ArrayList<>();
-    public static JSONObject jsonObject = new JSONObject();
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private PravachanaRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeLayout;
     public static final String TAG = PravachanaActivity.class.getSimpleName();
@@ -69,7 +68,6 @@ public class PravachanaActivity extends AppCompatActivity implements SwipeRefres
             public void onResponseFromServer(List<?> objects, Exception e) {
                 swipeLayout.setRefreshing(false);
                 if (e == null) {
-                    Log.d(TAG, "onResponseFromServer: " + objects);
                     ArrayList<Video> videos = new ArrayList<>();
                     for (Video video : (ArrayList<Video>) objects) {
                         if (video.getId().getVideoId() != null) {
@@ -97,21 +95,20 @@ public class PravachanaActivity extends AppCompatActivity implements SwipeRefres
     }
 
     private void initListener() {
-        ((PravachanaRecyclerViewAdapter) mAdapter).setOnItemClickListener(new PravachanaRecyclerViewAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Uri articleUri = Uri.parse(((TextView) v.findViewById(R.id.videoLink)).getText().toString());
-                System.out.println(articleUri.toString());
-                Intent intent = new Intent(Intent.ACTION_VIEW, articleUri);
-                intent.setPackage("com.google.android.youtube");
-                startActivity(intent);
-            }
-        });
+        mAdapter.setOnItemClickListener(this);
     }
-
 
     @Override
     public void onRefresh() {
         fetchVideos();
+    }
+
+    @Override
+    public void onItemClick(int position, Object data) {
+        Uri articleUri = Uri.parse("http://www.youtube.com/watch?v=" + ((Video)data).getId().getVideoId());
+        System.out.println(articleUri.toString());
+        Intent intent = new Intent(Intent.ACTION_VIEW, articleUri);
+        intent.setPackage("com.google.android.youtube");
+        startActivity(intent);
     }
 }

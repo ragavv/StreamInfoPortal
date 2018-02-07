@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 
 public class BranchViewActivity extends AppCompatActivity {
 
+    private static final String TAG = BranchViewActivity.class.getSimpleName();
     ArrayList<BranchDataObject> articleList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -28,8 +32,7 @@ public class BranchViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_branch_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Our Branches");
 
         mRecyclerView = (RecyclerView) findViewById(R.id.branch_recycler_view);
@@ -47,6 +50,8 @@ public class BranchViewActivity extends AppCompatActivity {
         articleList.add(new BranchDataObject("Sri GV Nagaraj/KR Prakash", "KR Road, Vidyanagar, Mandya", "08234 27974 / +91-87628 53196"));
         articleList.add(new BranchDataObject("Sri T R Prahlad Rao", "Chickpet, Achar Street, Tumkur, 572 101", "0816 2278590"));
         articleList.add(new BranchDataObject("Sri K V Gururaja Rao", "Fort Kanakapura, Ramanagara Dist.", "+91-98867 00358"));
+        String jsonInString = new Gson().toJson(articleList);
+        Log.d(TAG, "onCreate: " + jsonInString);
         mAdapter = new BranchRecyclerViewAdapter(articleList);
         mRecyclerView.setAdapter(mAdapter);
     }

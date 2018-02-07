@@ -8,12 +8,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,18 +27,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.hpm.sp.streaminfoportal.Constants;
 import com.hpm.sp.streaminfoportal.EventDetailsActivity;
+import com.hpm.sp.streaminfoportal.Interfaces.RecyclerViewClickListener;
 import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
 import com.hpm.sp.streaminfoportal.Models.EventDataObject;
 import com.hpm.sp.streaminfoportal.Network.NetworkHelper;
 import com.hpm.sp.streaminfoportal.R;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-
-import org.json.JSONObject;
+import com.hpm.sp.streaminfoportal.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,22 +48,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EventActivity extends AppCompatActivity implements
-        OnDateSelectedListener,
-        AppBarLayout.OnOffsetChangedListener,
-        OnMonthChangedListener {
+        AppBarLayout.OnOffsetChangedListener, CompactCalendarView.CompactCalendarViewListener {
 
     ArrayList<EventDataObject> eventList = new ArrayList<>();
-    public static JSONObject jsonObject = new JSONObject();
-    private RecyclerView mRecyclerView;
     private EventRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     public static final String TAG = EventActivity.class.getSimpleName();
     private HashMap<String, List<EventDataObject>> mEventsMap = new HashMap<>();
-    private CalendarDay previousDate;
+    private Date previousDate;
     private ProgressDialog progressDialog;
 
     @BindView(R.id.calendarView)
-    MaterialCalendarView widget;
+    CompactCalendarView widget;
 
     @BindView(R.id.appBarLayout)
     AppBarLayout appBarLayout;
@@ -87,9 +83,16 @@ public class EventActivity extends AppCompatActivity implements
     @BindView(R.id.noEvents)
     RelativeLayout mNoEvents;
 
+    @BindView(R.id.main_layout)
+    ConstraintLayout mMainLayout;
+
+    @BindView(R.id.event_recycler_view)
+    RecyclerView mRecyclerView;
+
     boolean isShow = true;
     int scrollRange = -1;
     boolean isExpanded = true;
+    private Utils utils = new Utils();
 
 
     @Override
@@ -101,25 +104,21 @@ public class EventActivity extends AppCompatActivity implements
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.event_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        widget.setOnDateChangedListener(this);
-        widget.setOnMonthChangedListener(this);
-        previousDate = new CalendarDay(new Date());
-        widget.setSelectedDate(previousDate.getDate());
-        widget.addDecorator(new SelectedDateDecorator(Color.WHITE, previousDate));
-        mTitleText.setText(new SimpleDateFormat("MMMM").format(widget.getSelectedDate().getCalendar().getTime()));
+        widget.setListener(this);
+        previousDate = new Date();
+        mTitleText.setText(new SimpleDateFormat("MMMM").format(previousDate));
         appBarLayout.addOnOffsetChangedListener(this);
         appBarLayout.setExpanded(isExpanded);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Loading Events ... ");
-        mCurrentDate.setText(new SimpleDateFormat("EEEE, dd-MMM-YYYY").format(widget.getSelectedDate().getCalendar().getTime()));
+        mCurrentDate.setText(new SimpleDateFormat("EEEE, dd-MMM-YYYY").format(previousDate));
         mMonthParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,43 +129,30 @@ public class EventActivity extends AppCompatActivity implements
         });
 
         refreshList();
-
     }
 
     protected void refreshList() {
-        mRecyclerView.setVisibility(View.GONE);
         progressDialog.show();
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+        if (utils.isConnectedToNetwork(this)) {
             NetworkHelper.getAllEvents(new ResponseInterface() {
                 @Override
                 public void onResponseFromServer(List<?> objects, Exception e) {
                     progressDialog.hide();
-                    mRecyclerView.setVisibility(View.VISIBLE);
                     if (e == null) {
                         Log.d(TAG, "onResponseFromServer: " + objects.get(0));
                         eventList = (ArrayList<EventDataObject>) objects;
                         mAdapter = new EventRecyclerViewAdapter();
                         mRecyclerView.setAdapter(mAdapter);
+                        mRecyclerView.addItemDecoration(new DividerItemDecoration(EventActivity.this, DividerItemDecoration.VERTICAL));
                         mapEvents();
-                        mAdapter.setOnItemClickListener(new EventRecyclerViewAdapter.MyClickListener() {
+                        mAdapter.setOnItemClickListener(new RecyclerViewClickListener() {
                             @Override
-                            public void onItemClick(EventDataObject dataObject, TextView v) {
+                            public void onItemClick(int position, Object dataObject) {
                                 Intent intent = new Intent(EventActivity.this, EventDetailsActivity.class);
-                                intent.putExtra(Constants.EVENT_ITEM, dataObject);
-//                                intent.putExtra(Constants.EVENT_TRANSITION_ELEMENT, Constants.EVENT_TRANSITION_NAME);
-//
-//                                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                                        EventActivity.this,
-//                                        v,
-//                                        Constants.EVENT_TRANSITION_NAME);
-
-//                                startActivity(intent, options.toBundle());
+                                intent.putExtra(Constants.EVENT_ITEM, (EventDataObject) dataObject);
                                 startActivity(intent);
                             }
                         });
-                        addDecorators();
                         updateList(widget, previousDate);
                     } else {
                         Log.d(TAG, "onResponseFromServer: " + e);
@@ -174,50 +160,25 @@ public class EventActivity extends AppCompatActivity implements
                     }
                 }
             });
-        } else
-            Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void mapEvents() {
         for (EventDataObject event : eventList) {
-            String key = new SimpleDateFormat("dd-MMM-YYYY").format(event.getDateText());
-            if (mEventsMap.containsKey(key)) {
-                List<EventDataObject> events = mEventsMap.get(key);
-                events.add(event);
-                mEventsMap.put(key, events);
-            } else {
-                List<EventDataObject> events = new ArrayList<>();
-                events.add(event);
-                mEventsMap.put(key, events);
-            }
+            Event ev = new Event(Color.RED, event.getDateText().getTime(), event);
+            widget.addEvent(ev, true);
         }
     }
 
-    private void addDecorators() {
-        List<CalendarDay> calendarDays = new ArrayList<>();
-        for (EventDataObject event : eventList) {
-            calendarDays.add(CalendarDay.from(event.getDateText()));
+
+    private void updateList(@NonNull CompactCalendarView widget, @NonNull Date date) {
+        mCurrentDate.setText(new SimpleDateFormat("EEEE, dd-MMM-YYYY").format(date));
+        ArrayList<EventDataObject> eventDataObjects = new ArrayList<>();
+        for (Event event : widget.getEvents(date)) {
+            eventDataObjects.add((EventDataObject) event.getData());
         }
-        widget.addDecorator(new EventDecorator(Color.BLUE, calendarDays));
-    }
-
-
-    @Override
-    public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-        addDecorators();
-        if (previousDate != null) {
-            widget.addDecorator(new SelectedDateDecorator(Color.BLACK, previousDate));
-        }
-        previousDate = date;
-        updateList(widget, date);
-    }
-
-    private void updateList(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date) {
-        widget.addDecorator(new SelectedDateDecorator(Color.WHITE, date));
-        mCurrentDate.setText(new SimpleDateFormat("EEEE, dd-MMM-YYYY").format(widget.getSelectedDate().getCalendar().getTime()));
-        ArrayList<EventDataObject> eventDataObjects = (ArrayList<EventDataObject>) mEventsMap.get(new SimpleDateFormat("dd-MMM-YYYY").format(widget.getSelectedDate().getCalendar().getTime()));
         mAdapter.swap(eventDataObjects);
-        if (eventDataObjects == null || eventDataObjects.size() == 0) {
+        if (eventDataObjects.size() == 0) {
             mRecyclerView.setVisibility(View.GONE);
             mNoEvents.setVisibility(View.VISIBLE);
         } else {
@@ -244,13 +205,24 @@ public class EventActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-        Log.d(TAG, "onMonthChanged: " + date);
-        mTitleText.setText(new SimpleDateFormat("MMMM").format(date.getCalendar().getTime()));
-    }
-
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onDayClick(Date dateClicked) {
+        previousDate = dateClicked;
+        updateList(widget, dateClicked);
+    }
+
+    @Override
+    public void onMonthScroll(Date firstDayOfNewMonth) {
+        mTitleText.setText(new SimpleDateFormat("MMMM").format(firstDayOfNewMonth));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        progressDialog.dismiss();
     }
 }

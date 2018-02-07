@@ -10,7 +10,11 @@ import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
 import com.hpm.sp.streaminfoportal.Models.ResultDataObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -99,7 +103,6 @@ public class NetworkHelper {
         call.enqueue(new Callback<ResultDataObject>() {
             @Override
             public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
-                Log.d(TAG, "onResponse: " + response.body());
                 responseInterface.onResponseFromServer(response.body().getEvent(), null);
             }
 
@@ -127,6 +130,84 @@ public class NetworkHelper {
             }
         });
 
+    }
+
+    public static void getAllGurus(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllGurus();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                responseInterface.onResponseFromServer(response.body().getGurus(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+
+    }
+
+    public static void getAllPanchangas(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllPanchangas();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                responseInterface.onResponseFromServer(response.body().getPanchangas(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+    }
+
+    public static void getPanchangaForToday(final ResponseInterface responseInterface) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy KK:mm:ss a Z");
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        String date = dateFormat.format(calendar.getTime());
+        Log.d(TAG, "getPanchangaForToday: Querying for today's date : " + date);
+        Call<ResultDataObject> call = apiService.getPanchangaForToday(date);
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                responseInterface.onResponseFromServer(response.body().getPanchangas(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+    }
+
+    public static void getAllArticles(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllArticles();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                responseInterface.onResponseFromServer(response.body().getArticles(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
     }
 
 }
