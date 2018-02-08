@@ -36,32 +36,9 @@ public class Article implements Parcelable
     @SerializedName("publishedDate")
     @Expose
     private String publishedDate;
-    public final static Parcelable.Creator<Article> CREATOR = new Creator<Article>() {
-
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Article createFromParcel(Parcel in) {
-            return new Article(in);
-        }
-
-        public Article[] newArray(int size) {
-            return (new Article[size]);
-        }
-
-    }
-            ;
-
-    protected Article(Parcel in) {
-        this.id = ((String) in.readValue((String.class.getClassLoader())));
-        this.title = ((String) in.readValue((String.class.getClassLoader())));
-        this.details = ((String) in.readValue((String.class.getClassLoader())));
-        this.imageUrl = ((String) in.readValue((String.class.getClassLoader())));
-        this.pdfLink = ((String) in.readValue((String.class.getClassLoader())));
-        this.v = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.publishedDate = ((String) in.readValue((String.class.getClassLoader())));
-    }
+    @SerializedName("showOnlyPdf")
+    @Expose
+    private Boolean showOnlyPdf = false;
 
     public Article() {
     }
@@ -122,6 +99,14 @@ public class Article implements Parcelable
         this.publishedDate = publishedDate;
     }
 
+    public Boolean getShowOnlyPdf() {
+        return showOnlyPdf;
+    }
+
+    public void setShowOnlyPdf(Boolean showOnlyPdf) {
+        this.showOnlyPdf = showOnlyPdf;
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
         String newLine = System.getProperty("line.separator");
@@ -150,20 +135,45 @@ public class Article implements Parcelable
         return result.toString();
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
-        dest.writeValue(title);
-        dest.writeValue(details);
-        dest.writeValue(imageUrl);
-        dest.writeValue(pdfLink);
-        dest.writeValue(v);
-        dest.writeValue(publishedDate);
-    }
-
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.title);
+        dest.writeString(this.details);
+        dest.writeString(this.imageUrl);
+        dest.writeString(this.pdfLink);
+        dest.writeValue(this.v);
+        dest.writeString(this.publishedDate);
+        dest.writeValue(this.showOnlyPdf);
+    }
+
+    protected Article(Parcel in) {
+        this.id = in.readString();
+        this.title = in.readString();
+        this.details = in.readString();
+        this.imageUrl = in.readString();
+        this.pdfLink = in.readString();
+        this.v = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.publishedDate = in.readString();
+        this.showOnlyPdf = (Boolean) in.readValue(Boolean.class.getClassLoader());
+    }
+
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel source) {
+            return new Article(source);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 }
 
 

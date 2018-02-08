@@ -71,5 +71,6 @@ dependencies {
     compile 'com.github.sundeepk:compact-calendar-view:2.0.2.2'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    compile 'com.romandanylyk:pageindicatorview:1.0.0'
     testCompile 'junit:junit:4.12'
 }

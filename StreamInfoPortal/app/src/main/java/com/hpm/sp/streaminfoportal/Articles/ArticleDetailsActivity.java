@@ -1,5 +1,6 @@
 package com.hpm.sp.streaminfoportal.Articles;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +19,9 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.picasso.transformations.ColorFilterTransformation;
 import jp.wasabeef.picasso.transformations.CropTransformation;
+import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
 
 public class ArticleDetailsActivity extends AppCompatActivity {
 
@@ -53,7 +56,7 @@ public class ArticleDetailsActivity extends AppCompatActivity {
             mDescription.setText(article.getDetails());
             Picasso.with(this)
                     .load(article.getImageUrl())
-//                    .transform(new CropTransformation())
+                    .transform(new ColorFilterTransformation(Color.parseColor("#99242424")))
                     .fit()
                     .into(mImageView);
 

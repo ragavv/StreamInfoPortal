@@ -8,7 +8,7 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_info_black"
+            android:icon="@drawable/ic_public"
             android:title="Sri VYASARAJARU" />
         <item
             android:id="@+id/nav_parampara"

@@ -1,4 +1,4 @@
-package com.hpm.sp.streaminfoportal.Events;
+package com.hpm.sp.streaminfoportal.EventsActivity;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hpm.sp.streaminfoportal.Constants;
 import com.hpm.sp.streaminfoportal.Interfaces.RecyclerViewClickListener;
 import com.hpm.sp.streaminfoportal.Models.EventDataObject;
 import com.hpm.sp.streaminfoportal.R;
+import com.hpm.sp.streaminfoportal.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -23,8 +25,13 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     private ArrayList<EventDataObject> eventDataset = new ArrayList<>();
     private RecyclerViewClickListener myClickListener;
+    private int mode = Constants.HORIZONTAL;
 
     public EventRecyclerViewAdapter() {
+    }
+
+    public EventRecyclerViewAdapter(int mode) {
+        this.mode = mode;
     }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder {
@@ -56,13 +63,15 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         this.myClickListener = myClickListener;
     }
 
-    public EventRecyclerViewAdapter(ArrayList<EventDataObject> myDataset) {
+    public EventRecyclerViewAdapter(ArrayList<EventDataObject> myDataset, int mode) {
         eventDataset = myDataset;
+        this.mode = mode;
     }
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_row, parent, false);
+        int resId = mode == Constants.HORIZONTAL ? R.layout.home_event_list_row : R.layout.event_list_row;
+        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
@@ -72,7 +81,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public void onBindViewHolder(final DataObjectHolder holder, final int position) {
         holder.nameLabel.setText(eventDataset.get(position).getNameText());
         holder.eventPlace.setText(eventDataset.get(position).getLocationText());
-        holder.eventDate.setText(new SimpleDateFormat("dd-MMM-YYYY, hh:mm a").format(eventDataset.get(position).getDateText()));
+        holder.eventDate.setText(new Utils().getGMTDateString(eventDataset.get(position).getDateText(), "dd-MMM-YYYY, hh:mm a"));
 
 
         holder.mBranchView.setOnClickListener(new View.OnClickListener() {

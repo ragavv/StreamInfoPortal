@@ -1,94 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical">
-    <RelativeLayout
+    android:layout_height="match_parent"
+    tools:context="com.hpm.sp.streaminfoportal.ContactInfoActivity">
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Contact Us"
-            android:id="@+id/contact_text"
-            android:textSize="9pt"
-            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-            android:layout_marginStart="5dp"/>
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_below="@id/contact_text"
-            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            >
+    </android.support.design.widget.AppBarLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sri K Jairaj"
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="9pt"
-                android:textStyle="bold"/>
+    <include layout="@layout/content_contact_info" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Administrator, Govt of Karnataka"
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="30dp"
-                android:textSize="8pt"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sri Vyasaraja Matha, Benne Govindappa Road, Gandhibazaar, Bangalore."
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="65dp"
-                android:textSize="8pt"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+91 80 2661 3348 info@srivyasarajamathasosale.org www.srivyasarajamathasosale.org"
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="120dp"
-                android:textSize="8pt"/>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="270dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="App related queries"
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="9pt"
-                android:textStyle="bold"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="vyasarajavaibhava@gmail.com"
-                android:padding="4dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="40dp"
-                android:textSize="8pt"/>
-
-        </android.support.v7.widget.CardView>
-
-    </RelativeLayout>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

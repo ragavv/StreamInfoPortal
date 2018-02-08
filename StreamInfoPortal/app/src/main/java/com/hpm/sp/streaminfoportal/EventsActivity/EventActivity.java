@@ -1,18 +1,13 @@
-package com.hpm.sp.streaminfoportal.Events;
+package com.hpm.sp.streaminfoportal.EventsActivity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.DividerItemDecoration;
@@ -25,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -63,7 +57,6 @@ public class EventActivity extends AppCompatActivity implements
 
     @BindView(R.id.appBarLayout)
     AppBarLayout appBarLayout;
-
 
     @BindView(R.id.collapsibleToolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -134,23 +127,23 @@ public class EventActivity extends AppCompatActivity implements
     protected void refreshList() {
         progressDialog.show();
         if (utils.isConnectedToNetwork(this)) {
-            NetworkHelper.getAllEvents(new ResponseInterface() {
+            NetworkHelper.getAllEvents("dateTime", null, null, new ResponseInterface() {
                 @Override
                 public void onResponseFromServer(List<?> objects, Exception e) {
                     progressDialog.hide();
                     if (e == null) {
                         Log.d(TAG, "onResponseFromServer: " + objects.get(0));
                         eventList = (ArrayList<EventDataObject>) objects;
-                        mAdapter = new EventRecyclerViewAdapter();
+                        mAdapter = new EventRecyclerViewAdapter(Constants.VERTICAL);
                         mRecyclerView.setAdapter(mAdapter);
                         mRecyclerView.addItemDecoration(new DividerItemDecoration(EventActivity.this, DividerItemDecoration.VERTICAL));
                         mapEvents();
                         mAdapter.setOnItemClickListener(new RecyclerViewClickListener() {
                             @Override
                             public void onItemClick(int position, Object dataObject) {
-                                Intent intent = new Intent(EventActivity.this, EventDetailsActivity.class);
-                                intent.putExtra(Constants.EVENT_ITEM, (EventDataObject) dataObject);
-                                startActivity(intent);
+//                                Intent intent = new Intent(EventActivity.this, EventDetailsActivity.class);
+//                                intent.putExtra(Constants.EVENT_ITEM, (EventDataObject) dataObject);
+//                                startActivity(intent);
                             }
                         });
                         updateList(widget, previousDate);

@@ -40,4 +40,31 @@ public class Utils {
 
         return DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
     }
+
+    public CharSequence getDateFromString(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Date time = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            time = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return simpleDateFormat.format(time);
+    }
+
+    public String getGMTDateString(Date date) {
+        final SimpleDateFormat sdf =
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        return sdf.format(date);
+    }
+
+    public String getGMTDateString(Date date, String format) {
+        final SimpleDateFormat sdf =
+                new SimpleDateFormat(format);
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        return sdf.format(date);
+    }
 }

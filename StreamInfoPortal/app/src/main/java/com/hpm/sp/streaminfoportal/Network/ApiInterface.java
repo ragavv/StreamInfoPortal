@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryName;
 
 /**
  * Created by kumardivyarajat on 1/21/18.
@@ -13,9 +14,12 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("events?_sort=dateTime")
-    Call<ResultDataObject> getAllEvents();
-
+    @GET("events")
+    Call<ResultDataObject> getAllEvents(
+            @Query("_sort") String sortBy,
+            @Query("dateTime_lte") String endTime,
+            @Query("dateTime_gte") String currentTime
+    );
 
     @GET("pravachana")
     Call<ResultDataObject> getAllVideos();
@@ -26,10 +30,12 @@ public interface ApiInterface {
     @GET("panchanga")
     Call<ResultDataObject> getAllPanchangas();
 
-    @GET("article?_sort=publishedDate")
+    @GET("article?_sort=-publishedDate")
     Call<ResultDataObject> getAllArticles();
-
 
     @GET("panchanga")
     Call<ResultDataObject> getPanchangaForToday(@Query("date") String date);
+
+    @GET("branch?_sort=city")
+    Call<ResultDataObject> getAllBranches();
 }

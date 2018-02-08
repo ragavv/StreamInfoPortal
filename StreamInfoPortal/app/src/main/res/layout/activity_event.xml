@@ -4,56 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hpm.sp.streaminfoportal.Events.EventActivity">
+    tools:context="com.hpm.sp.streaminfoportal.EventsActivity.EventActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsibleToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:elevation="@dimen/cardview_compat_inset_shadow"
             app:contentScrim="?attr/colorPrimary"
+            app:elevation="3dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <com.github.sundeepk.compactcalendarview.CompactCalendarView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/calendarView"
                 android:layout_width="fill_parent"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:layout_marginTop="?attr/actionBarSize"
                 android:layout_height="250dp"
-                app:compactCalendarEventIndicatorStyle="small_indicator"
-                app:compactCalendarTargetHeight="250dp"
-                app:compactCalendarTextSize="12sp"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 app:compactCalendarBackgroundColor="#fff"
                 app:compactCalendarCurrentDayTextColor="@color/white"
-                app:compactCalendarTextColor="@color/titleTextColor"
-                app:compactCalendarCurrentSelectedDayTextColor="@color/white"
                 app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+                app:compactCalendarCurrentSelectedDayTextColor="@color/white"
+                app:compactCalendarEventIndicatorStyle="small_indicator"
                 app:compactCalendarMultiEventIndicatorColor="@color/colorPrimaryDark"
-                />
+                app:compactCalendarTargetHeight="250dp"
+                app:compactCalendarTextColor="@color/titleTextColor"
+                app:compactCalendarTextSize="12sp" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:layout_collapseMode="pin">
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
                     android:id="@+id/toolbar_month_parent"
-                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:layout_height="match_parent">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/title"
@@ -64,8 +63,8 @@
                         android:textColor="@color/white" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
                         android:id="@+id/icon"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
 

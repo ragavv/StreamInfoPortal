@@ -96,8 +96,8 @@ public class NetworkHelper {
     }
 
 
-    public static void getAllEvents(final ResponseInterface responseInterface) {
-        Call<ResultDataObject> call = apiService.getAllEvents();
+    public static void getAllEvents(String orderBy, String endTime, String currentTime, final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllEvents(orderBy, endTime, currentTime);
 
 
         call.enqueue(new Callback<ResultDataObject>() {
@@ -201,6 +201,24 @@ public class NetworkHelper {
             public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
                 Log.d(TAG, "onResponse: " + response.body());
                 responseInterface.onResponseFromServer(response.body().getArticles(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+    }
+
+    public static void getAllBranches(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllBranches();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                responseInterface.onResponseFromServer(response.body().getBranches(), null);
             }
 
             @Override

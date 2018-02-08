@@ -58,9 +58,11 @@ public class TatvaArticlesActivity extends AppCompatActivity implements Recycler
 
         articles = new ArrayList<>();
         mRefreshLayout.setOnRefreshListener(this);
-
+        mAdapter = new TatvaRecyclerViewAdapter(TatvaArticlesActivity.this, articles);
+        mAdapter.setOnItemClickListener(TatvaArticlesActivity.this);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(TatvaArticlesActivity.this, DividerItemDecoration.VERTICAL));
+        mRecyclerView.setAdapter(mAdapter);
         refreshList();
-
     }
 
     protected void refreshList() {
@@ -72,10 +74,7 @@ public class TatvaArticlesActivity extends AppCompatActivity implements Recycler
                     mRefreshLayout.setRefreshing(false);
                     if (e == null) {
                         articles = (List<Article>) objects;
-                        mAdapter = new TatvaRecyclerViewAdapter(TatvaArticlesActivity.this, articles);
-                        mAdapter.setOnItemClickListener(TatvaArticlesActivity.this);
-                        mRecyclerView.addItemDecoration(new DividerItemDecoration(TatvaArticlesActivity.this, DividerItemDecoration.VERTICAL));
-                        mRecyclerView.setAdapter(mAdapter);
+                        mAdapter.swap(articles);
                     } else {
                         Log.e(TAG, "onResponseFromServer: Error : ", e);
                     }
@@ -93,19 +92,14 @@ public class TatvaArticlesActivity extends AppCompatActivity implements Recycler
     public void onItemClick(int position, Object data) {
         Article article = (Article) data;
         Log.d(TAG, "onItemClick: " + article.getPdfLink());
-        if (article.getDetails() != null) {
-            if (article.getPdfLink() != null) {
-                openPDFPage(article);
-            } else {
-                Intent intent = new Intent(this, ArticleDetailsActivity.class);
-                intent.putExtra(Constants.ARTICLE, article);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        } else if (article.getPdfLink() != null) {
+        if (article.getShowOnlyPdf() && article.getPdfLink() != null) {
             openPDFPage(article);
+        } else {
+            Intent intent = new Intent(this, ArticleDetailsActivity.class);
+            intent.putExtra(Constants.ARTICLE, article);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
-
     }
 
     private void openPDFPage(Article article) {

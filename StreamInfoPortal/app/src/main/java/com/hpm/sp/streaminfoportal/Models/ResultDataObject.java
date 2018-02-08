@@ -36,6 +36,10 @@ public class ResultDataObject implements Parcelable {
     @Expose
     private List<Article> articles = null;
 
+    @SerializedName("branch")
+    @Expose
+    private List<Branch> branches = null;
+
 
     public ResultDataObject() {
     }
@@ -80,6 +84,14 @@ public class ResultDataObject implements Parcelable {
         this.articles = articles;
     }
 
+    public List<Branch> getBranches() {
+        return branches;
+    }
+
+    public void setBranches(List<Branch> branches) {
+        this.branches = branches;
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
         String newLine = System.getProperty("line.separator");
@@ -120,6 +132,7 @@ public class ResultDataObject implements Parcelable {
         dest.writeTypedList(this.gurus);
         dest.writeTypedList(this.panchangas);
         dest.writeTypedList(this.articles);
+        dest.writeTypedList(this.branches);
     }
 
     protected ResultDataObject(Parcel in) {
@@ -128,6 +141,7 @@ public class ResultDataObject implements Parcelable {
         this.gurus = in.createTypedArrayList(Guru.CREATOR);
         this.panchangas = in.createTypedArrayList(Panchanga.CREATOR);
         this.articles = in.createTypedArrayList(Article.CREATOR);
+        this.branches = in.createTypedArrayList(Branch.CREATOR);
     }
 
     public static final Creator<ResultDataObject> CREATOR = new Creator<ResultDataObject>() {

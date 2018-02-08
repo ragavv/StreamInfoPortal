@@ -1,15 +1,14 @@
-package com.hpm.sp.streaminfoportal.AboutUs;
+package com.hpm.sp.streaminfoportal.AboutUsActitviy;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.TextView;
 
 import com.hpm.sp.streaminfoportal.R;
+
 
 public class AboutUsActivity extends AppCompatActivity {
 
@@ -19,10 +18,7 @@ public class AboutUsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about_us);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView aboutText = (TextView) findViewById(R.id.about_text);
-        aboutText.setMovementMethod(new ScrollingMovementMethod());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 }

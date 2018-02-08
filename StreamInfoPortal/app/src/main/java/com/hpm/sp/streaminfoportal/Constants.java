@@ -14,4 +14,7 @@ public class Constants {
     public static final String URL = "url";
     public static final String TITLE = "title";
     public static final String ARTICLE = "article";
+
+    public static final Integer HORIZONTAL = 123;
+    public static final Integer VERTICAL = 124;
 }
