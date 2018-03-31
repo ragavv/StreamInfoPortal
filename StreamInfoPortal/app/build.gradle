@@ -2,14 +2,22 @@ apply plugin: 'com.android.application'
 apply from: 'getExt.gradle'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'svmpanchanga'
+            keyPassword 'Qazwsx*12'
+            storeFile file('svmpanchanga')
+            storePassword 'Qazwsx*12'
+        }
+    }
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.1'
     defaultConfig {
-        applicationId "com.hpm.sp.streaminfoportal"
+        applicationId "com.hpm.sp.streaminfoportal.stage"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.1"
+        versionCode 10
+        versionName "6.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -18,14 +26,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions {
+        noCompress "pdf"
+    }
     flavorDimensions "tier", "minApi"
-
     productFlavors {
         stage {
             dimension 'tier'
             applicationId "com.hpm.sp.streaminfoportal.stage"
-            versionCode 2
-            versionName "1.1"
+            versionCode 10
+            versionName "6.4"
             buildConfigField 'String', 'URL_SERVER', '"ssm.kumardivyarajat.com"'
             buildConfigField 'Boolean', 'URL_SCHEME_IS_HTTPS', 'true'
             buildConfigField 'Boolean', 'NETWORK_IS_LOGGIG_ENABLED', 'true'
@@ -33,22 +43,21 @@ android {
 
         prod {
             dimension 'minApi'
-            applicationId "com.hpm.sp.streaminfoportal"
-            versionCode 2
-            versionName "1.1"
+            applicationId "com.hpm.sp.streaminfoportal.stage"
+            versionCode 10
+            versionName "6.4"
             buildConfigField 'String', 'URL_SERVER', '"ssm.kumardivyarajat.com"'
             buildConfigField 'Boolean', 'URL_SCHEME_IS_HTTPS', 'true'
             buildConfigField 'Boolean', 'NETWORK_IS_LOGGIG_ENABLED', 'false'
         }
     }
-
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -65,6 +74,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.8.1'
+    //compile 'com.github.barteksc:android-pdf-viewer:3.0.0-beta.5'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'jp.wasabeef:picasso-transformations:2.2.0'
@@ -73,4 +83,10 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile 'com.romandanylyk:pageindicatorview:1.0.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.firebase:firebase-core:12.0.0'
+    compile 'com.google.firebase:firebase-messaging:12.0.0'
+
+
 }
+
+apply plugin: 'com.google.gms.google-services'

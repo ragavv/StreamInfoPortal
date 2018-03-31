@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hpm.sp.streaminfoportal.PravachanaActivity">
+    android:background="?attr/selectableItemBackground"
+    android:clickable="false"
+    android:focusable="false"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,11 +18,1074 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_guru_parampare" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_yathi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:scrollbars="vertical"
+        tools:context="com.hpm.sp.streaminfoportal.GuruParampare.GuruParampareActivity">
+
+        <TableLayout
+            android:id="@+id/table22"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_margin="2dp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="Jagadguru Sriman Madwacharya Moola Mahasamasthana \nSri Sri Vyasaraja Matha (Sosale) Guru Parampare"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="1.Sri Harinamaka \nParamathma"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="6.Sri Sanathana \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="2"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="11.Sri Gnanesa \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="2.Sri Chaturmukha Brahmadevaru"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="7.Sri Dhurvasa \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="2"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="12.Sri Para \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="3.Sri Sanaka \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="8.Sri Gnananidhi \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="2"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="13.Sri SatyaPragyna \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="4.Sri Sanandana \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="9.Sri Garudavahana \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="2"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="14.Sri Pragna \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="5.Sri Sanathkumara \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="10.Sri Kaivalya \nTheertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="2"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="15.Sri Achyutha \nprekshacharyaru"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="1.Srimad Ananda Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="2.Sri Padmanabha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="3.Sri Narahari Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="4.Sri Madhava Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="5.Sri Akshobya Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="6.Sri Jaya Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="7.Sri Vidyadhirajaru"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="8.Sri Rajendra Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="9.Sri Jayathwaja Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="10.Sri Purushothama Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="11.Sri Brahmanya Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="12.Sri Vyasa Theertharu (Sri Vyasarajaru)"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="13.Sri Srinivasa Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="14.Sri Rama Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="15.Sri Lakshmikantha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="16.Sri Sripathy Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="17.Sri Ramachandra Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="18.Sri LakshmiVallabha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="19.Sri Lakshminatha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="20.Sri Lakshmipathy Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="21.Sri Lakshminarayana Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="22.Sri Ragunatha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="23.Sri Jagannatha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="24.Sri Srinatha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="25.Sri SriVidyanatha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="26.Sri Vidyapathy Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="27.Sri Vidyavallabha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="28.Sri Vidyakantha Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="29.Sri Vidyanidhi Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="30.Sri Vidyapoorna Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="31.Sri Vidyasrisindhu Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="32.Sri Vidyasridhara Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="33.Sri Vidyasrinivasa Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="34.Sri Vidyasamudra Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="35.Sri Vidyaratnakara Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="36.Sri Vidyavaridhi Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="37.Sri Vidyaprasanna Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="38.Sri Vidyapayonidhi Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="39.Sri Vidyavachaspathy Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape_white"
+                    android:gravity="center"
+                    android:text="40.Sri Vidyamanohara Theertharu"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="0">
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_span="3"
+                    android:background="@drawable/table_shape"
+                    android:gravity="center"
+                    android:text="41.Sri VidyaShreesha Theertharu (Present Peetapadhipathi)"
+                    android:textStyle="normal"
+                    android:textSize="9dp"/>/>
+
+            </TableRow>
+        </TableLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,9 +1,13 @@
 package com.hpm.sp.streaminfoportal;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by kumardivyarajat on 24/12/16.
@@ -35,4 +39,6 @@ public class FreshBytViewPager extends ViewPager {
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
+
 }

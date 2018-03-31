@@ -29,8 +29,7 @@ public class ArticleDetailsActivity extends AppCompatActivity {
     private Article article;
     private Utils utils;
 
-    @BindView(R.id.description)
-    TextView mDescription;
+
 
     @BindView(R.id.image)
     ImageView mImageView;
@@ -53,7 +52,7 @@ public class ArticleDetailsActivity extends AppCompatActivity {
         article = getIntent().getParcelableExtra(Constants.ARTICLE);
         if (article != null) {
             getSupportActionBar().setTitle(article.getTitle());
-            mDescription.setText(article.getDetails());
+           // mDescription.setText(article.getDetails());
             Picasso.with(this)
                     .load(article.getImageUrl())
                     .transform(new ColorFilterTransformation(Color.parseColor("#99242424")))

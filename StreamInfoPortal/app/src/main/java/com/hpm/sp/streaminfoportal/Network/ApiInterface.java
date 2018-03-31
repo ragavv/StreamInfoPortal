@@ -27,11 +27,17 @@ public interface ApiInterface {
     @GET("guru?_sort=name")
     Call<ResultDataObject> getAllGurus();
 
+    @GET("/")
+    Call<ResultDataObject> getEpaatha();
+
     @GET("panchanga")
     Call<ResultDataObject> getAllPanchangas();
 
     @GET("article?_sort=-publishedDate")
     Call<ResultDataObject> getAllArticles();
+
+    @GET("ekadashi")
+    Call<ResultDataObject> getAllEkadashis();
 
     @GET("panchanga")
     Call<ResultDataObject> getPanchangaForToday(@Query("date") String date);

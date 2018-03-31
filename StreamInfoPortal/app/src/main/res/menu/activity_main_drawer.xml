@@ -7,43 +7,87 @@
             android:icon="@drawable/ic_home_black"
             android:title="Home" />
         <item
+            android:id="@+id/nav_panchanga"
+            android:icon="@drawable/ic_public"
+            android:title="Panchanga" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_public"
             android:title="Sri VYASARAJARU" />
+
+        <!--item
+            android:id="@+id/nav_amavasya"
+            android:icon="@drawable/ic_public"
+            android:title="Amavasya" /-->
         <item
             android:id="@+id/nav_parampara"
             android:icon="@drawable/ic_filter_vintage_black"
-            android:title="Guru Parampara" />
+            android:title="Guru Parampare" />
+
         <item
+            android:id="@+id/nav_aradhane"
+            android:icon="@drawable/ic_filter_vintage_black"
+            android:title="Aradhane(2018/19)" />
+
+        <item
+            android:id="@+id/nav_ekadashi"
+            android:icon="@drawable/ic_public"
+            android:title="Ekadashi/Amavasya" />
+        <item
+            android:id="@+id/nav_splEvents"
+            android:icon="@drawable/ic_event_note_black_24dp"
+            android:title="Special Events" />
+        <item
+            android:id="@+id/nav_announcements"
+            android:icon="@drawable/ic_speaker_phone_black_24dp"
+            android:title="Announcements" />
+
+        <!--item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_event_black"
-            android:title="Events" />
+            android:title="Events" /-->
+        <item
+            android:id="@+id/nav_paata"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="e-Paatha" />
         <item
             android:id="@+id/nav_pravachanas"
             android:icon="@drawable/ic_music_note_black"
             android:title="Pravachanas" />
-        <item
+        <!--item
             android:id="@+id/nav_tatva"
             android:title="Articles"
             android:icon="@drawable/ic_note_black"
-            />
+            /-->
+        <item
+            android:id="@+id/nav_downloads"
+            android:icon="@drawable/ic_file_download_black_24dp"
+            android:title="Downloads" />
+        <item
+            android:id="@+id/nav_aboutUs"
+            android:icon="@drawable/ic_group_black_24dp"
+            android:title="About" />
     </group>
 
-    <item android:title="Contact Us">
+    <item android:title="Find Us">
         <menu>
+            <!--item
+                android:id="@+id/nav_phone"
+                android:icon="@drawable/ic_phone_black_24dp"
+                android:title="Call" /-->
             <item
-                android:id="@+id/nav_mail"
-                android:icon="@drawable/ic_mail_black"
-                android:title="Contact Info" />
+                android:id="@+id/nav_web"
+                android:icon="@drawable/ic_public_black_24dp"
+                android:title="Web" />
 
             <item
                 android:id="@+id/nav_facebook"
                 android:icon="@drawable/ic_facebook_logo"
-                android:title="Facebook Page" />
+                android:title="Facebook" />
             <item
-                android:id="@+id/nav_branch"
-                android:icon="@drawable/ic_place_black"
-                android:title="Branches" />
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/ic_twitter"
+                android:title="Twitter" />
         </menu>
     </item>
 

@@ -1,0 +1,139 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="0,1,2"
+    android:gravity="left">
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Name"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/name"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Maasa"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/maasa"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Paksha"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/paksha"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Thithi"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/thithi"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Brindavana"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/brindavana"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Date"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/aradhaneDate"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+    </TableRow>
+
+</TableLayout>

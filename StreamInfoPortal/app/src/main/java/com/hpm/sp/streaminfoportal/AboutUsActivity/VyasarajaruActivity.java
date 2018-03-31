@@ -1,21 +1,18 @@
-package com.hpm.sp.streaminfoportal.AboutUsActitviy;
+package com.hpm.sp.streaminfoportal.AboutUsActivity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.hpm.sp.streaminfoportal.R;
 
 
-public class AboutUsActivity extends AppCompatActivity {
+public class VyasarajaruActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        setContentView(R.layout.activity_vyasarajaru);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

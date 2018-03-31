@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,10 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+
             android:weightSum="4">
 
             <ImageView
@@ -47,6 +49,7 @@
                     android:layout_below="@+id/viewPager"
                     android:layout_centerInParent="true"
                     android:padding="8dp"
+
                     app:piv_animationType="worm"
                     app:piv_dynamicCount="true"
                     app:piv_interactiveAnimation="true"
@@ -62,20 +65,23 @@
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/panchanga_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:padding="4dp"
+                android:background="#f4c430"
                 card_view:cardCornerRadius="4dp"
                 card_view:cardUseCompatPadding="true"
-                card_view:contentPadding="8dp">
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:background="#FFEFD5"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
                     android:orientation="vertical">
 
                     <TextView
@@ -83,162 +89,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingBottom="@dimen/activity_horizontal_margin"
-                        android:text="Panchanga"
-                        android:textSize="14sp" />
+                        android:text="Panchanga today"
+                        android:background="#FFE4B5"
+                        android:textSize="14sp"
+                        android:gravity="center"/>
 
-                    <LinearLayout
+                    <!--TextView
+                        style="@style/TitleText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="2"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/activity_horizontal_margin"
+                        android:id="@+id/date"
+                        android:background="#FFE4B5"
+                        android:textSize="14sp"
+                        android:gravity="center"/-->
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/date"
-                            style="@style/DescriptionText"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:id="@+id/month"
-                            style="@style/DescriptionText"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="2"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tithi"
-                            style="@style/DescriptionText"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:id="@+id/nakshatram"
-                            style="@style/DescriptionText"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="2"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/paksham"
-                            style="@style/DescriptionText"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/rahukalam"
-                            style="@style/DescriptionText"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-
-
+                    <include layout="@layout/event_table" />
                 </LinearLayout>
+
+
 
             </android.support.v7.widget.CardView>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:id="@+id/ln"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
-
-                    <TextView
-                        style="@style/TitleText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Upcoming Events"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        style="@style/SubtitleText"
-                        android:id="@+id/see_all_events_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/ic_border"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:paddingTop="4dp"
-                        android:text="View All"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
-
-                </RelativeLayout>
-
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/main_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ln">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </RelativeLayout>
-
-
-            <!--<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
-            <!--android:id="@+id/event_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="80dp"-->
-            <!--android:layout_gravity="top"-->
-            <!--android:layout_margin="4dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:padding="4dp"-->
-            <!--card_view:cardCornerRadius="4dp">-->
-
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:paddingLeft="4dp"-->
-            <!--android:paddingTop="4dp"-->
-            <!--android:text="Upcoming events"-->
-            <!--android:textAlignment="center"-->
-            <!--android:textSize="9pt"-->
-            <!--android:textStyle="bold" />-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/event_text"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="20pt"-->
-            <!--android:paddingLeft="16dp"-->
-            <!--android:paddingTop="2dp"-->
-            <!--android:textAlignment="center"-->
-            <!--android:textSize="8pt" />-->
-            <!--</android.support.v7.widget.CardView>-->
 
         </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

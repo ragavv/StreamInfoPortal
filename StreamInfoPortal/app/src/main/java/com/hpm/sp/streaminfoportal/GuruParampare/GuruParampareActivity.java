@@ -1,40 +1,35 @@
 package com.hpm.sp.streaminfoportal.GuruParampare;
 
-import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
+import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
-import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
-import com.hpm.sp.streaminfoportal.Models.Guru;
-import com.hpm.sp.streaminfoportal.Network.NetworkHelper;
+import com.hpm.sp.streaminfoportal.Models.AradhaneDataObject;
+import com.hpm.sp.streaminfoportal.Network.DatabaseHandler;
 import com.hpm.sp.streaminfoportal.R;
 import com.hpm.sp.streaminfoportal.Utils;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class GuruParampareActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class GuruParampareActivity extends AppCompatActivity {
 
     private static final String TAG = GuruParampareActivity.class.getSimpleName();
-    private List<Guru> guruList = new ArrayList<>();
-    private ProgressDialog mProgressDialog;
-    private GuruParampareAdapter mAdapter;
     private Utils utils = new Utils();
+    private DatabaseHandler db = null;
 
-    @BindView(R.id.gurus)
-    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,102 +37,28 @@ public class GuruParampareActivity extends AppCompatActivity implements SearchVi
         setContentView(R.layout.activity_guru_parampare);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ButterKnife.bind(this);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setCancelable(false);
-        mProgressDialog.setTitle("Loading Guru List ...");
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(GuruParampareActivity.this, DividerItemDecoration.VERTICAL));
-
-        fetchGurus();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_guru_parampare, menu);
-        return true;
+
+
+    private String pad(String str, int size, char padChar) {
+        StringBuilder sbr = new StringBuilder(str);
+        while (sbr.length() < size) {
+            sbr.append(padChar);
+        }
+        return sbr.toString();
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_search) {
-            final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-            searchView.setOnQueryTextListener(GuruParampareActivity.this);
-
-            MenuItemCompat.setOnActionExpandListener(item,
-                    new MenuItemCompat.OnActionExpandListener() {
-                        @Override
-                        public boolean onMenuItemActionCollapse(MenuItem item) {
-                            mAdapter.setFilter(guruList);
-                            return true; // Return true to collapse action view
-                        }
-
-                        @Override
-                        public boolean onMenuItemActionExpand(MenuItem item) {
-                            return true;
-                        }
-                    });
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void fetchGurus() {
-        if (utils.isConnectedToNetwork(this)) {
-            mProgressDialog.show();
-            NetworkHelper.getAllGurus(new ResponseInterface() {
-                @Override
-                public void onResponseFromServer(List<?> objects, Exception e) {
-                    mProgressDialog.hide();
-                    if (e == null) {
-                        guruList = (List<Guru>) objects;
-                        handleResponse();
-                    } else {
-                        Log.e(TAG, "onResponseFromServer: Error", e);
-                    }
-                }
-            });
-        }
-    }
-
-    private void handleResponse() {
-        mAdapter = new GuruParampareAdapter(this, guruList);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-        final List<Guru> filteredModelList = filter(guruList, s);
-        mAdapter.setFilter(filteredModelList);
-        return true;
-    }
-
-    private List<Guru> filter(List<Guru> models, String query) {
-        query = query.toLowerCase();
-        final List<Guru> filteredModelList = new ArrayList<>();
-        for (Guru model : models) {
-            final String text = model.getName().toLowerCase();
-            if (text.contains(query)) {
-                filteredModelList.add(model);
-            }
-        }
-        return filteredModelList;
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mProgressDialog.dismiss();
     }
 }

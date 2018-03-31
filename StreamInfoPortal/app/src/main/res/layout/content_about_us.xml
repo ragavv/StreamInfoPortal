@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.hpm.sp.streaminfoportal.AboutUsActitviy.AboutUsActivity"
+    tools:context="com.hpm.sp.streaminfoportal.AboutUsActivity.AboutUsActivity"
     tools:showIn="@layout/activity_about_us">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:id="@+id/aboutUsText"
         android:text="@string/about_text" />
 
-</android.support.v4.widget.NestedScrollView>
+    <TextView
+        android:id="@+id/versionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/emailText2"
+        android:layout_below="@+id/emailText2"
+        android:layout_marginTop="26dp"
+        android:text="Test" />
+
+    <TextView
+        android:id="@+id/emailText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aboutUsText"
+        android:layout_below="@+id/aboutUsText"
+        android:text="@string/email_us" />
+
+
+
+</RelativeLayout>

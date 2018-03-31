@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--uses-permission android:name="android.permission.CALL_PHONE" /-->
+    <!--uses-permission android:name="android.permission.READ_PHONE_STATE" /-->
 
     <application
         android:name=".ApplicationBase"
@@ -29,6 +31,16 @@
         <activity
             android:name=".AboutUs.AboutUsActivity"
             android:label="@string/title_activity_about_us"
+            android:parentActivityName=".Main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EkadashiActivity.EkadashiActivity"
+            android:label="@string/title_activity_ekadashi"
             android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -77,8 +89,28 @@
                 android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
         <activity
+            android:name=".AradhaneActivity.AradhaneRecyclerViewAdapter$AradhaneActivity"
+            android:label="@string/title_activity_aradhane"
+            android:parentActivityName=".Main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
             android:name=".PravachanaActivity"
             android:label="@string/title_activity_pravachana"
+            android:parentActivityName=".Main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EPaathaActivity"
+            android:label="@string/title_activity_ePaatha"
             android:parentActivityName=".Main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -124,7 +156,7 @@
                 android:value="com.hpm.sp.streaminfoportal.Articles.TatvaArticlesActivity" />
         </activity>
         <activity
-            android:name=".AboutUsActitviy.AboutUsActivity"
+            android:name=".AboutUsActivity.AboutUsActivity"
             android:label="@string/title_activity_about_us"
             android:parentActivityName=".Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -132,6 +164,64 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
         </activity>
+        <activity
+            android:name=".SplEvents.SplEventActivity"
+            android:label="@string/title_activity_SpecialEvents"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Announcements.AnnouncementActivity"
+            android:label="@string/title_activity_Announcements"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutUsActivity.VyasarajaruActivity"
+            android:label="@string/title_activity_vyasarajaru"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AradhaneActivity.AradhaneActivity"
+            android:label="@string/title_activity_aradhane"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Downloads.DownloadActivity"
+            android:label="@string/title_activity_download"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hpm.sp.streaminfoportal.Main.MainActivity" />
+        </activity>
+        <service android:name=".service.MessageReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">>
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.InstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
+
 
 </manifest>

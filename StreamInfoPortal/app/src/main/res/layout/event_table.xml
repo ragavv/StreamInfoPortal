@@ -1,0 +1,683 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="0,1,2"
+    android:gravity="left">
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Date"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/dateDisplay"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:layout_span="2"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+</TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Thithi"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/thithi"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/TEndTime"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Vaara"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+             android:id="@+id/Vaar"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:layout_span="2"
+            android:gravity="left"
+            />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nakshatra"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/nakshatram"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/NEndTime"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Yoga"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Yoga"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/YEndTime"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Karana"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Karana"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/KEndTime"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sh Thithi"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/ShThithi"
+            android:layout_margin="1dp"
+            android:layout_column="1"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/ShTEndTime"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:layout_column="2" />
+    </TableRow>
+
+    <!-- AYana-->
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Samvatsara"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Samvatsara"
+            android:layout_span="2"
+   />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ayana"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Ayana"
+            android:layout_span="2"
+   />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ritu"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Ritu"
+            android:layout_span="2"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Maasa"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Maasa"
+            android:layout_span="2"
+     />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Paksha"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Paksha"
+            android:layout_span="2"
+             />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Maasa Niyamaka"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/maasaNiyamaka"
+            android:layout_span="2"
+            />
+    </TableRow>
+
+    <!-- Events-->
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Events"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Events"
+            android:layout_span="2"
+            />
+    </TableRow>
+
+
+
+
+
+<!-- Raahu-->
+
+
+
+    <!--TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Raahu Kaala"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Raahu"
+            android:layout_span="2"
+             />
+    </TableRow-->
+
+
+    <!--TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Yamakanda"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Yamakanda"
+            android:layout_span="2"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Guli"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/Guli"
+            android:layout_span="2"
+           />
+    </TableRow>
+
+
+
+    <Sun/Moon -->
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sun Rise"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/SRTime"
+            android:layout_span="2"
+            />
+    </TableRow>
+
+
+
+
+    <!--TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sun Set"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/SSTime"
+            android:layout_span="2"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Moon Rise"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/MRTime"
+            android:layout_span="2"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Moon Set"
+            android:textStyle="bold"
+            android:layout_margin="1dp"
+            android:layout_column="0"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFE4B5"
+            android:gravity="left"
+            android:id="@+id/MSTime"
+            android:layout_span="2"
+            />
+    </TableRow-->
+</TableLayout>

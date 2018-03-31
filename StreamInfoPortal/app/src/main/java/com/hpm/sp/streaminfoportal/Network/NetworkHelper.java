@@ -7,9 +7,12 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.hpm.sp.streaminfoportal.BuildConfig;
 import com.hpm.sp.streaminfoportal.Interfaces.ResponseInterface;
+import com.hpm.sp.streaminfoportal.Models.AradhaneDataObject;
+import com.hpm.sp.streaminfoportal.Models.PanchangaObject;
 import com.hpm.sp.streaminfoportal.Models.ResultDataObject;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +36,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkHelper {
 
+    //AIzaSyCxFBLqmxn4EFV4yu_PHArOTabQsg7QCWA
+    //https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxFBLqmxn4EFV4yu_PHArOTabQsg7QCWA&channelId=UCmUHkSDsogUwCnuiZcjgnIA&part=snippet,id&order=date&maxResults=50
+
     public static final int versionCode = BuildConfig.VERSION_CODE;
     public static final String versionName = BuildConfig.VERSION_NAME;
     public static final String APP_NAME = "Sri Sosale Vyasaraja Matha ";
@@ -44,8 +50,9 @@ public class NetworkHelper {
     private static AppConfig config;
     private static Retrofit retrofit = null;
     private static ApiInterface apiService;
+    private static ApiInterface apiService2;
     private static String baseUrl;
-
+    private static String baseUrl2;
     private NetworkHelper() {
         Log.d(TAG, "Instance created");
     }
@@ -87,6 +94,8 @@ public class NetworkHelper {
         apiService = retrofit.create(ApiInterface.class);
     }
 
+
+
     public static String getBaseUrl() {
         return baseUrl;
     }
@@ -115,6 +124,25 @@ public class NetworkHelper {
     }
 
     public static void getAllVideos(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllVideos();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                responseInterface.onResponseFromServer(response.body().getVideos(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+
+    }
+
+    public static void getAllEPaathas(final ResponseInterface responseInterface) {
+
         Call<ResultDataObject> call = apiService.getAllVideos();
 
 
@@ -167,19 +195,14 @@ public class NetworkHelper {
         });
     }
 
-    public static void getPanchangaForToday(final ResponseInterface responseInterface) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy KK:mm:ss a Z");
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        String date = dateFormat.format(calendar.getTime());
+    public static PanchangaObject getPanchangaForToday(DatabaseHandler db, String date) throws ParseException{
+    try {
         Log.d(TAG, "getPanchangaForToday: Querying for today's date : " + date);
-        Call<ResultDataObject> call = apiService.getPanchangaForToday(date);
+        //Call<ResultDataObject> call = apiService.getPanchangaForToday(date);
 
-
-        call.enqueue(new Callback<ResultDataObject>() {
+       // SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        PanchangaObject pObject = db.getPanchangaForSelectedDate(date);
+        /*call.enqueue(new Callback<ResultDataObject>() {
             @Override
             public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
                 responseInterface.onResponseFromServer(response.body().getPanchangas(), null);
@@ -189,7 +212,17 @@ public class NetworkHelper {
             public void onFailure(Call<ResultDataObject> call, Throwable t) {
                 responseInterface.onResponseFromServer(null, new Exception(t));
             }
-        });
+        });*/
+        return pObject;
+    }catch(Exception ex)
+    {
+
+    }
+    return null;
+    }
+
+    public static List<AradhaneDataObject> getAradhaneDetails(DatabaseHandler db) throws Exception{
+        return db.getAradhaneDetails();
     }
 
     public static void getAllArticles(final ResponseInterface responseInterface) {
@@ -201,6 +234,24 @@ public class NetworkHelper {
             public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
                 Log.d(TAG, "onResponse: " + response.body());
                 responseInterface.onResponseFromServer(response.body().getArticles(), null);
+            }
+
+            @Override
+            public void onFailure(Call<ResultDataObject> call, Throwable t) {
+                responseInterface.onResponseFromServer(null, new Exception(t));
+            }
+        });
+    }
+
+    public static void getAllEkadashis(final ResponseInterface responseInterface) {
+        Call<ResultDataObject> call = apiService.getAllEkadashis();
+
+
+        call.enqueue(new Callback<ResultDataObject>() {
+            @Override
+            public void onResponse(Call<ResultDataObject> call, Response<ResultDataObject> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                responseInterface.onResponseFromServer(response.body().getEkadashis(), null);
             }
 
             @Override

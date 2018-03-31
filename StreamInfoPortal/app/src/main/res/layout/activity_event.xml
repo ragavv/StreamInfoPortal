@@ -35,7 +35,9 @@
                 app:compactCalendarMultiEventIndicatorColor="@color/colorPrimaryDark"
                 app:compactCalendarTargetHeight="250dp"
                 app:compactCalendarTextColor="@color/titleTextColor"
-                app:compactCalendarTextSize="12sp" />
+                app:compactCalendarTextSize="12sp"
+                />
+
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -45,7 +47,7 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
                 <LinearLayout
-                    android:id="@+id/toolbar_month_parent"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -54,20 +56,27 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <!--TextView
                         android:id="@+id/title"
                         style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_activity_event"
                         android:textColor="@color/white" />
 
                     <ImageView
                         android:id="@+id/icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+                        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" /-->
 
+                    <TextView
+                        android:id="@+id/title1"
+                        style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/title_activity_panchanga"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
 
@@ -76,7 +85,48 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
+        <LinearLayout
+            android:id="@+id/toolbar_month_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/prev_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/compactcalendar_view" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/compactcalendar_view"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
     </android.support.design.widget.AppBarLayout>
+
 
     <include layout="@layout/content_event" />
 
